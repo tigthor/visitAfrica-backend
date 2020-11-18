@@ -1,0 +1,39 @@
+{
+  "name": "visitafrica-backend",
+  "version": "1.0.0",
+  "description": "This is the visit africa backend",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "startDev": "nodemon --exec babel-node src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Soma-Technologies-Inc/visitAfrica-backend.git"
+  },
+  "keywords": [
+    "Visitafrica"
+  ],
+  "author": "tigtor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Soma-Technologies-Inc/visitAfrica-backend/issues"
+  },
+  "homepage": "https://github.com/Soma-Technologies-Inc/visitAfrica-backend#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/node": "^7.12.6",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/register": "^7.12.1",
+    "eslint": "^7.13.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-config-standard": "^16.0.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-mocha": "^8.0.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-standard": "^4.1.0",
+    "nodemon": "^2.0.6"
+  }
+}
