@@ -22,3 +22,5 @@ app.use('/', (req, res) => res.status(404).json({
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Sever listening on port ${PORT}`));
+
+export default app;
