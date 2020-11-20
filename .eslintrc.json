@@ -1,5 +1,10 @@
 {
 	"extends": ["airbnb-base"],
+	"parser": "babel-eslint",
+	"parserOptions": {
+		"sourceType": "module",
+		"allowImportExportEverywhere": true
+	},
 	"rules": {
 		"indent": ["error", "tab"],
 		"no-unused-vars": "warn",
