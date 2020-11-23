@@ -26,7 +26,7 @@ The mockups for the app design can be viewed [here](https://www.pivotaltracker.c
 
 
 ### REST API Docs 	:clap: 	:clap:
-The Api documentation is done using postman. View [VISIT AFRICA Documentation](https://)
+The Api documentation is done using postman. View [VISIT AFRICA Documentation](https://www.getpostman.com/collections/441a0bf9e581e7f8b87e)
 
 ### JWT Authentication :raised_hands: :raised_hands:
 The API endpoints are being authenticated using [JWT(Json Web Token)](https://jwt.io/).
