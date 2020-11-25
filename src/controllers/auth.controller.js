@@ -48,6 +48,34 @@ class AuthController {
 		});
 		return ResponseService.send(res);
 	}
+
+	/**
+	 *
+	 * @param {object} req
+	 * @param {object} res
+	 * @returns {object} the user will login successfully
+	 */
+	static async login(req, res) {
+		const user = await UserService.findUserByAttribute({ email: req.body.email });
+		const userData = {
+			id: user.id,
+			fullname: user.fullname,
+			email: user.email,
+			birthdate: user.birthdate,
+			gender: user.gender,
+			tel: user.tel,
+			country: user.country,
+			city: user.city,
+			profilePicture: user.profilePicture,
+			role: user.role,
+			createdAt: user.createdAt,
+			updatedAt: user.updatedAt };
+		ResponseService.setSuccess(200, 'successfully logged in', {
+			token: TokenService.generateToken(userData),
+			user: userData
+		});
+		return ResponseService.send(res);
+	}
 }
 
 export default AuthController;

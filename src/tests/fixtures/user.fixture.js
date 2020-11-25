@@ -65,4 +65,20 @@ export const expiredToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZn
 
 export const createUser = async () => {
 	await UserService.createUser(newUser);
+export const userLogin = {
+	email: 'loulou@gmail.com',
+	password: 'hey'
+};
+
+export const wrongCredentials = {
+
+	email: 'louu@gmail.com',
+	password: 'hey'
+
+};
+
+export const invalidEmail = {
+
+	email: 'loulou@gmail.co',
+
 };

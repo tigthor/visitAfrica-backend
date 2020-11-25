@@ -13,7 +13,7 @@ describe('/POST login with email and password', () => {
 			.send(userLogin)
 			.end((err, res) => {
 				res.body.should.be.an('object');
-				res.status.should.be.equal(401);
+				res.status.should.be.equal(200);
 				res.body.should.have.property('message');
 				done();
 			});

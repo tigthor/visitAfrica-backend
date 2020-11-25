@@ -1,35 +1,62 @@
-import models from '../database/models';
+import db from '../database/models';
+import Queries from './index';
 
-const { User } = models;
-
-/**
- * this is a user service
- */
-class UserService {
-	/**
-   * @param {object} user
-   * @return {object} this is a service for creating a user
-   */
-	static createUser(user) {
-		return User.create(user);
+class UserServices {
+	static async CreateUser(NewUser) {
+		try {
+			const user = await Queries.create(db.user, NewUser);
+			return user;
+		} catch (error) {
+			return error;
+		}
 	}
 
-	/**
- * @param {object} attribute
- * @param {object} property
- * @returns {object} update user by attribute
-*/
-	static async updateUserByAttribute(attribute, property) {
-		return User.update(property, { where: attribute,
-		});
+	static async findEmail(email) {
+		try {
+			const emailExists = await db.User.findOne({ where: { email } });
+			return emailExists;
+		} catch (error) {
+			return error;
+		}
 	}
 
-	/**
-	 * @param {object} attribute
-	 * @returns {object} getting a user that is already logged in
-	 */
-	static findUserByAttribute(attribute) {
-		return User.findOne({ where: attribute });
+	static async activeUser(email, updateUser) {
+		try {
+			const userToUpdate = await db.user.findOne({
+				where: {
+					email,
+				},
+			});
+			if (userToUpdate && userToUpdate.isVerified) {
+				return {
+					status: 409,
+					message: 'user already activated',
+				};
+			}
+			if (userToUpdate) {
+				await db.user.update(updateUser, {
+					where: {
+						email,
+					},
+					returning: true,
+					plain: true,
+				});
+
+				return {
+					status: 200,
+					message: 'user account successfuly activated',
+				};
+			}
+			return {
+				status: 404,
+				message: 'User not found',
+			};
+		} catch (error) {
+			return {
+				status: 400,
+				message: error,
+			};
+		}
 	}
 }
-export default UserService;
+export default UserServices;
