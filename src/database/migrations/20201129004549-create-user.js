@@ -48,7 +48,7 @@ export async function up(queryInterface, Sequelize) {
 			defaultValue: 'avatar.jpg',
 		},
 		role: {
-			type: Sequelize.ENUM('Super Administrator', 'Travel Administrator', 'Travel Team Member', 'Manager', 'Requester'),
+			type: Sequelize.STRING,
 			defaultValue: 'Requester',
 		},
 		isVerified: {

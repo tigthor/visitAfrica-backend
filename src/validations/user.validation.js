@@ -82,8 +82,41 @@ export const validateSignup = (req, res, next) => {
 
 	const { error } = schema.validate(req.body);
 	if (error) {
+		const errors = error.details.map(e => e.message);
+		ResponseService.setError(402, errors);
+		return ResponseService.send(res);
+	}
+	next();
+};
+/** }
+     * @param {object} req
+     * @param {object} res
+   * @param {object} next
+     * @return {object} this is going to verify a user
+     */
+export const validateUserRoleBody = (req, res, next) => {
+	const schema = Joi.object({
+		userId: Joi.string().regex(/^[0-9]{1,}$/).required().messages({
+			'string.pattern.base': 'UserId must be a number',
+
+		}),
+
+		role: Joi.string().trim().valid('superAdmin', 'Travel-Administrator', 'Travel-Team-Member', 'Manager', 'Requester')
+			.required()
+			.messages({
+				'any.required': 'role is required',
+				'any.only': 'Roles must be one of [superAdmin, Travel-Administrator, Travel-Team-Member, Manager, Requester]',
+
+			})
+
+	}).options({ abortEarly: false });
+
+	const { error } = schema.validate({ ...req.params, ...req.body });
+
+	if (error) {
 		const errors = error.details.map(err => err.message);
-		ResponseService.setError(400, errors);
+
+		ResponseService.setError(402, errors);
 		return ResponseService.send(res);
 	}
 

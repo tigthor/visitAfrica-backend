@@ -1,3 +1,4 @@
+/* eslint-disable radix */
 import ResponseService from '../services/response.service';
 import UserService from '../services/user.service';
 
@@ -59,6 +60,21 @@ class UserController {
 			createdAt: findUser.createdAt,
 			updatedAt: findUser.updatedAt
 		});
+		return ResponseService.send(res);
+	}
+
+	/**
+     *
+     * @param {object} req
+     * @param {object} res
+     * @returns {object} this update user role
+     */
+	static async userRoleSetting(req, res) {
+		const { userId } = req.params;
+		const id = parseInt(userId);
+		await UserService.findUserByProperty(id);
+		UserService.updateProperty({ id }, { role: req.body.role });
+		ResponseService.setSuccess(200, 'User role was updated succesfuly');
 		return ResponseService.send(res);
 	}
 }

@@ -39,7 +39,7 @@ const signUpTest = () => {
 				.send(userValidate)
 				.end((err, res) => {
 					res.body.should.be.an('object');
-					res.status.should.be.equal(400);
+					res.status.should.be.equal(402);
 					res.body.should.have.property('message');
 					done();
 				});

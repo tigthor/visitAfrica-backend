@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
 			country: DataTypes.STRING,
 			city: DataTypes.STRING,
 			profilePicture: DataTypes.STRING,
-			role: DataTypes.ENUM('Super Administrator', 'Travel Administrator', 'Travel Team Member', 'Manager', 'Requester'),
+			role: DataTypes.STRING,
 			isVerified: DataTypes.BOOLEAN,
 		},
 		{
