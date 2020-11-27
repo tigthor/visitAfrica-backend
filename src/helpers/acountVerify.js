@@ -1,10 +1,10 @@
-import models from '../database/models';
+import models from "../database/models";
 
 const accountVerify = async (email) => {
   try {
     const emailExists = await models.User.update(
-      { isVerified: true },
-      { where: { email } },
+      { isVerified: "true" },
+      { where: { email: email } }
     );
     return emailExists;
   } catch (error) {
