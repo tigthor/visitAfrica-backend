@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+<<<<<<< HEAD
 import { config } from 'dotenv';
 
 config();
@@ -20,3 +21,17 @@ class tokenizer {
 }
 
 export default tokenizer;
+=======
+
+const GenerateToken = (payload) => {
+	const token = jwt.sign(
+		{
+			payload,
+		},
+		process.env.JWTKEY,
+	);
+
+	return token;
+};
+export default GenerateToken;
+>>>>>>> work in progress
