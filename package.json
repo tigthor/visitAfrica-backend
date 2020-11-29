@@ -8,6 +8,7 @@
     "startDev": "nodemon --exec babel-node src/server.js",
     "lint": "./node_modules/.bin/eslint .",
     "lint:fixIssues": "./node_modules/.bin/eslint . --fix",
+    "migrate": "sequelize db:migrate",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "start": "NODE_ENV=production babel-node ./src/server.js"
   },
