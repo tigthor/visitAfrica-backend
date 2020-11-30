@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /**
  * @param {object} queryInterface
  * @param {object} Sequelize
