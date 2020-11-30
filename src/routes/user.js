@@ -5,9 +5,9 @@ import validInput from '../middlewares/validInput';
 const userRoute = Router();
 
 userRoute.post(
-  '/signup',
-  validInput.signupForm,
-  userController.signup,
+	'/signup',
+	validInput.signupForm,
+	userController.signup,
 );
 userRoute.get('/verify/activate', userController.emailVerify);
 

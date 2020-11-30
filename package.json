@@ -6,7 +6,7 @@
   "scripts": {
     "test": "./node_modules/.bin/nyc ./node_modules/.bin/mocha --require @babel/register src/tests/*.js --exit",
     "startDev": "nodemon --exec babel-node src/server.js",
-    "lint": "./node_modules/.bin/eslint .",
+    "lint": "./node_modules/.bin/eslint src/**/*.js",
     "lint:fixIssues": "./node_modules/.bin/eslint . --fix",
     "migrate": "sequelize db:migrate",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
@@ -31,6 +31,7 @@
     "chai-http": "^4.3.0",
     "coveralls": "^3.1.0",
     "eslint": "^7.13.0",
+    "eslint-auto-fix": "^1.0.3",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^6.15.0",
     "eslint-config-standard": "^16.0.1",
@@ -52,11 +53,7 @@
     "@babel/plugin-transform-runtime": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
     "@babel/register": "^7.12.1",
-<<<<<<< HEAD
     "babel-eslint": "^10.1.0",
-=======
-    "@hapi/joi": "^17.1.1",
->>>>>>> final implementation
     "@sendgrid/mail": "^7.4.0",
     "bcrypt": "^5.0.0",
     "chai-http": "^4.3.0",

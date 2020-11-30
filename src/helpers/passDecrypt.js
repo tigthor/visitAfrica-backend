@@ -1,6 +1,5 @@
-import bcrypt from "bcrypt"
+import bcrypt from 'bcrypt';
 
-const comparePassword = (plainPwd, hashedPwd) =>
-  bcrypt.compareSync(plainPwd, hashedPwd)
+const comparePassword = (plainPwd, hashedPwd) => bcrypt.compareSync(plainPwd, hashedPwd);
 
-export default comparePassword
+export default comparePassword;
