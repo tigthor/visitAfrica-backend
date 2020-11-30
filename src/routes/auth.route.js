@@ -1,5 +1,6 @@
 /* eslint-disable import/named */
 import { Router } from 'express';
+// eslint-disable-next-line import/no-unresolved
 import passport from 'passport';
 import AuthController from '../controllers/auth.controller';
 import { fakeUser } from '../tests/fixtures/user.fixture';
