@@ -1,5 +1,6 @@
 /* eslint-disable import/no-named-as-default-member */
 import { Router } from 'express';
+// eslint-disable-next-line import/no-unresolved
 import passport from 'passport';
 import AuthController from '../controllers/auth.controller';
 import protectroute from '../middlewares/protect-route.middleware';

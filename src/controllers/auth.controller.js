@@ -1,3 +1,4 @@
+/* eslint-disable require-jsdoc */
 import BcryptService from '../services/bcrypt.service';
 import TokenService from '../services/token.service';
 import MailService from '../services/mail.service';
@@ -5,14 +6,15 @@ import ResponseService from '../services/response.service';
 import UserService from '../services/user.service';
 
 /**
- * This is the authentication class
+ *  AuthController
  */
 class AuthController {
 	/**
 	 * @param {object} req
 	 * @param {object} res
-	 * @return {object} this is going to create a user
+	 * @returns {object} this is going to create a user
 	 */
+
 	static async signup(req, res) {
 		const newUser = await UserService.createUser({
 			fullname: req.body.fullname,

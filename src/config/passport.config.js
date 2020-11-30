@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 import FacebookStrategy from 'passport-facebook';
 import dotenv from 'dotenv';

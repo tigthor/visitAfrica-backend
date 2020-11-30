@@ -1,5 +1,6 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
+// eslint-disable-next-line import/no-unresolved
 import sinon from 'sinon';
 import sendGrid from '@sendgrid/mail';
 import app from '../../server';
