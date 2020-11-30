@@ -11,13 +11,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.get('/', (req, res) => res.status(200).json({
-  status: 200,
-  message: 'Visit Africa APIs'
+	status: 200,
+	message: 'Visit Africa APIs',
 }));
 
 app.use('/', (req, res) => res.status(404).json({
-  status: 404,
-  message: 'You requested the wrong route'
+	status: 404,
+	message: 'You requested the wrong route',
 }));
 
 const PORT = process.env.PORT || 3000;

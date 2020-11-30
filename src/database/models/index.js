@@ -15,15 +15,24 @@ if (config.use_env_variable) {
 }
 
 readdirSync(__dirname)
+<<<<<<< HEAD
 	.filter(file => (
 		file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js'
 	))
 	.forEach(file => {
+=======
+	.filter((file) => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js'))
+	.forEach((file) => {
+>>>>>>> bg: resolving eslint bug
 		const model = require(join(__dirname, file))(sequelize, DataTypes);
 		db[model.name] = model;
 	});
 
+<<<<<<< HEAD
 Object.keys(db).forEach(modelName => {
+=======
+Object.keys(db).forEach((modelName) => {
+>>>>>>> bg: resolving eslint bug
 	if (db[modelName].associate) {
 		db[modelName].associate(db);
 	}
