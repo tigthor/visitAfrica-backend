@@ -1,4 +1,4 @@
-const { Model } = require('sequelize');
+import { Model } from 'sequelize';
 
 module.exports = (sequelize, DataTypes) => {
 	class User extends Model {
@@ -17,12 +17,13 @@ module.exports = (sequelize, DataTypes) => {
       fullname: DataTypes.STRING,
       email: DataTypes.STRING,
       password: DataTypes.STRING,
-      gender: DataTypes.STRING,
+      gender: DataTypes.ENUM('male', 'female'),
       birthdate: DataTypes.DATEONLY,
       tel: DataTypes.STRING,
       country: DataTypes.STRING,
       city: DataTypes.STRING,
-      role: DataTypes.STRING,
+      profilePicture: DataTypes.STRING,
+      role: DataTypes.ENUM('Super Administrator', 'Travel Administrator', 'Travel Team Member', 'Manager', 'Requester'),
       isVerified: DataTypes.BOOLEAN,
     },
     {

@@ -1,10 +1,8 @@
+import express from 'express';
+import AuthRoute from './auth.route';
 
+const app = express();
 
-import { Router } from 'express';
-import UserController from '../controllers/Index';
-const UserRouter = Router()
+app.use('/api/auth', AuthRoute);
 
-
-UserRouter.post("/register", UserController.signup)
-
-export default UserRouter;
+export default app;
