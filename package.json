@@ -4,7 +4,7 @@
   "description": "This is the visit africa backend",
   "main": "server.js",
   "scripts": {
-    "test": "./node_modules/.bin/nyc ./node_modules/.bin/mocha --require @babel/register src/tests/*.js --exit",
+    "test": "export NODE_ENV=test && nyc --reporter=html --reporter=text mocha --require @babel/register src/tests/**/*.test.js --timeout 100000 --exit",
     "startDev": "nodemon --exec babel-node src/server.js",
     "lint": "./node_modules/.bin/eslint src/**/*.js",
     "lint:fixIssues": "./node_modules/.bin/eslint . --fix",
@@ -27,6 +27,7 @@
   "homepage": "https://github.com/Soma-Technologies-Inc/visitAfrica-backend#readme",
   "devDependencies": {
     "babel-eslint": "^10.1.0",
+    "babel-plugin-istanbul": "^6.0.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "coveralls": "^3.1.0",

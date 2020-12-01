@@ -1,17 +1,28 @@
 import jwt from 'jsonwebtoken';
 
+/**
+ * This is a service that is dealing with token encoding and decoding
+ */
 class TokenService {
-	static async generateToken(payload) {
-		return jwt.sign(
-			{
-				payload,
-			},
-			process.env.JWTKEY,
-		);
+	/**
+	 * @param {object} payload
+	 * @return {object} this is accept a payload and generate a jwt token
+	 */
+	static generateToken(payload) {
+		return jwt.sign(payload, process.env.SECRET, { expiresIn: process.env.EXPIRE_TIME });
 	}
 
+	/**
+	 * @param {object} token
+	 * @return {object} this is accept a token and decode it according to the secret
+	 */
 	static async verifyToken(token) {
-		return await jwt.verify(token, process.env.JWTKEY);
+		return jwt.verify(token, process.env.SECRET, (err, decoded) => {
+			if (err) {
+				return err;
+			}
+			return decoded;
+		});
 	}
 }
 

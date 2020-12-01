@@ -13,6 +13,7 @@
 			"tab"
 		],
 		"no-tabs": 0,
+		"no-undef": 0,
 		"no-unused-vars": "warn",
 		"consistent-return": "off",
 		"no-unused-expressions": "off",

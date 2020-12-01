@@ -2,32 +2,33 @@ import BcryptService from '../services/bcrypt.service';
 import TokenService from '../services/token.service';
 import MailService from '../services/mail.service';
 import ResponseService from '../services/response.service';
+import UserService from '../services/user.service';
 
+/**
+ * This is the authentication class
+ */
 class AuthController {
 	/**
-	 * @description this takes request and response make a full
-	 * @author tigthor
-	 * @date 30/11/2020
-	 * @static
-	 * @param {*} req
-	 * @param {*} res
-	 * @return {*} object
-	 * @memberof UserController
+	 * @param {object} req
+	 * @param {object} res
+	 * @return {object} this is going to create a user
 	 */
 	static async signup(req, res) {
 		const newUser = await UserService.createUser({
-			fullname:req.body.fullname,
-			email:req.body.email,
+			fullname: req.body.fullname,
+			email: req.body.email,
 			password: BcryptService.hashPassword(req.body.password),
-			birthdate:req.body.birthdate,
-			gender:req.body.gender,
-			tel:req.body.tel,
-			country:req.body.country,
-			city:req.body.city,
+			birthdate: req.body.birthdate,
+			gender: req.body.gender,
+			tel: req.body.tel,
+			country: req.body.country,
+			city: req.body.city,
 		});
-		MailService.sendMail(req.body.fullname,req.body.email, TokenService.generateToken(req.body.email));
+		MailService.sendMail(req.body.fullname, req.body.email, TokenService.generateToken({
+			email: req.body.email
+		}));
 
-		ResponseService.setSuccess(201,'User Successfully Created', {
+		ResponseService.setSuccess(201, 'User Successfully Created', {
 			id: newUser.id,
 			fullname: newUser.fullname,
 			email: newUser.email,
