@@ -1,15 +1,16 @@
 language: node_js
 node_js:
   - "stable"
-install: npm install
 services:
   - postgresql
+  env:
+  global:
+  - NODE_ENV=test  
 
 before_script:
   - psql -c 'CREATE DATABASE teamwork;' -U postgres
-cache:
-  directories:
-    - node_modules
+cache: npm
+install: npm install
 script:
   - npm test
 after_success:
