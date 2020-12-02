@@ -45,7 +45,7 @@ The API endpoints are being authenticated using [JWT(Json Web Token)](https://jw
 * Run `npm test` to run test
 
 ## Hosted Application can be accessed here 	:fire: :fire: 
-[Hosted on heroku](https://visitafrica-backend.herokuapp.com/)
+[Hosted on heroku](https://visitafrica-backend.herokuapp.com)
 
 ## Contributors :star_struck: :star_struck: :heavy_heart_exclamation:
 
