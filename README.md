@@ -10,7 +10,7 @@ Visit Africa Application is the application that will help users to visit Afirca
 ### Badges
 [![Reviewed by Hound](https://img.shields.io/badge/Reviewed%20by-Hound-blueviolet)](https://houndci.com)
 [![Build Status](https://travis-ci.org/Soma-Technologies-Inc/visitAfrica-backend.svg?branch=develop)](https://travis-ci.org/Soma-Technologies-Inc/visitAfrica-backend)
-[![Coverage Status](https://coveralls.io/repos/github/Soma-Technologies-Inc/visitAfrica-backend/badge.svg?branch=ch-code-coverage-175494032)](https://coveralls.io/github/Soma-Technologies-Inc/visitAfrica-backend?branch=ch-code-coverage-175494032)
+[![Coverage Status](https://coveralls.io/repos/github/Soma-Technologies-Inc/visitAfrica-backend/badge.svg?branch=develop)](https://coveralls.io/github/Soma-Technologies-Inc/visitAfrica-backend?branch=develop)
 
 ### Technologies :balance_scale: :computer:
 * [Es6+ Javascript](https://www.ecma-international.org/ecma-262/9.0/index.html) The project was written with ES6 syntax and above.

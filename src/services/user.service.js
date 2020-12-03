@@ -30,5 +30,23 @@ class UserService {
 	static findUserByAttribute(attribute) {
 		return User.findOne({ where: attribute });
 	}
+
+	/**
+	 * @param {string} instance
+	 * @param {object} property
+	 * @returns {object} this update a given user
+	 */
+	static updateProperty(instance, property) {
+		return User.update(property, { where: instance });
+	}
+
+	/**
+	 *
+	 * @param {object} property
+	 * @returns {object} this return a given user based by property
+	 */
+	static findByProperty(property) {
+		return User.findOne({ where: property });
+	}
 }
 export default UserService;

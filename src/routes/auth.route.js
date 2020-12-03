@@ -10,6 +10,7 @@ router.post(
 	'/signup',
 	validateSignup, checkIfEmailExist, AuthController.signup,
 );
+router.patch('/activate', AuthController.verifyUser);
 
 router.post(
 	'/login',
@@ -17,5 +18,6 @@ router.post(
 	checkUserCredentials,
 	AuthController.login,
 );
+router.get('/activate', AuthController.verifyUser);
 
 export default router;

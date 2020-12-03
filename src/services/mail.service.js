@@ -22,7 +22,7 @@ class MailService {
 					button: {
 						color: '#33b5e5',
 						text: 'Verify account',
-						link: `http://localhost:3000/api/auth/verify/activate?token=${token}`,
+						link: `${process.env.BASE_URL}/api/auth/activate?token=${token}`,
 					},
 				},
 			},
@@ -31,7 +31,7 @@ class MailService {
 			theme: 'salted',
 			product: {
 				name: 'Visit Africa App',
-				link: `http://localhost:3000/api/auth/verify/activate?token=${token}`,
+				link: `${process.env.BASE_URL}/api/auth/activate?token=${token}`,
 			},
 		});
 		const emailTemplate = mailGenerator.generate(emailToSend);
