@@ -1,17 +1,20 @@
 language: node_js
 node_js:
-  - "stable"
+  - 12.14.1
+before_install:
+  - npm install sequelize-cli -g
+install:
+  - npm install
+before-script:
+  - npm add sequelize-cli
 services:
   - postgresql
-  env:
-  global:
-  - NODE_ENV=test  
-
 before_script:
-  - psql -c 'CREATE DATABASE teamwork;' -U postgres
-cache: npm
-install: npm install
+  - psql -c 'create database visitAfrica_test;' -U postgres
 script:
   - npm test
-after_success:
-- npm run coveralls
+after_script:
+  - npm run coveralls
+notifications:
+  email: false
+sudo: false
