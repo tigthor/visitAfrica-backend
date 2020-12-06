@@ -9,12 +9,18 @@ export const checkIfEmailExist = async (req, res, next) => {
 		ResponseService.setError(409, 'email is already exist');
 		return ResponseService.send(res);
 	}
+	next();
 };
 export const checkUserCredentials = async (req, res, next) => {
-	const user = await UserService.findUserByAttribute({ email: req.body.email, isVerified: true });
-
+	const user = await UserService.findUserByAttribute({ email: req.body.email });
 	if (!user) {
-		ResponseService.setError(401, 'Invalid email or password');
+		ResponseService.setError(400, 'email not registered');
+		return ResponseService.send(res);
+	}
+	const userIsVerified = await UserService.findUserByAttribute({
+		email: req.body.email, isVerified: true });
+	if (!userIsVerified) {
+		ResponseService.setError(401, 'account is not verified');
 		return ResponseService.send(res);
 	}
 

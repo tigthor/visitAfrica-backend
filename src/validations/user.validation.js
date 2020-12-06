@@ -115,6 +115,7 @@ export const validateProfilePage = (req, res, next) => {
 		ResponseService.setError(400, errors);
 		return ResponseService.send(res);
 	}
+	next();
 };
 export const validateLoginBody = (req, res, next) => {
 	const schema = Joi.object({
@@ -133,7 +134,7 @@ export const validateLoginBody = (req, res, next) => {
 
 	if (error) {
 		const errors = error.details.map(err => err.message);
-		ResponseService.setError(400, errors);
+		ResponseService.setError(422, errors);
 		return ResponseService.send(res);
 	}
 	next();

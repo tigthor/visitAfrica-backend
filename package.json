@@ -4,12 +4,11 @@
   "description": "This is the visit africa backend",
   "main": "server.js",
   "scripts": {
-    "test": "export NODE_ENV=test && npm run dropTables && npm run migrate && nyc --reporter=html --reporter=text mocha --require @babel/register ./src/tests/main.test.js --timeout 100000 --exit",
+    "test": "cross-env NODE_ENV=test npm run migrate && cross-env NODE_ENV=test nyc --reporter=html --reporter=text mocha --require @babel/register ./src/tests/main.test.js --timeout 100000 --exit",
     "startDev": "nodemon --exec babel-node src/server.js",
     "lint": "./node_modules/.bin/eslint src/**/*.js",
     "lint:fixIssues": "./node_modules/.bin/eslint . --fix",
-    "migrate": "sequelize db:migrate",
-    "dropTables": "sequelize db:migrate:undo:all",
+    "migrate": "sequelize db:migrate:undo:all && sequelize db:migrate && sequelize db:seed:all",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "start": "NODE_ENV=production babel-node ./src/server.js"
   },
@@ -62,6 +61,7 @@
     "bcrypt": "^5.0.0",
     "chai-http": "^4.3.0",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-validator": "^6.7.0",

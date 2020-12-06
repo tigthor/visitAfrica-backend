@@ -57,22 +57,10 @@ class AuthController {
 	 */
 	static async login(req, res) {
 		const user = await UserService.findUserByAttribute({ email: req.body.email });
-		const userData = {
-			id: user.id,
-			fullname: user.fullname,
-			email: user.email,
-			birthdate: user.birthdate,
-			gender: user.gender,
-			tel: user.tel,
-			country: user.country,
-			city: user.city,
-			profilePicture: user.profilePicture,
-			role: user.role,
-			createdAt: user.createdAt,
-			updatedAt: user.updatedAt };
+		const userData = { ...user.dataValues };
+		delete userData.password;
 		ResponseService.setSuccess(200, 'successfully logged in', {
 			token: TokenService.generateToken(userData),
-			user: userData
 		});
 		return ResponseService.send(res);
 	}
