@@ -32,5 +32,4 @@ class UserService {
 		return User.findOne({ where: attribute });
 	}
 }
-
 export default UserService;

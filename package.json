@@ -4,7 +4,11 @@
   "description": "This is the visit africa backend",
   "main": "server.js",
   "scripts": {
+<<<<<<< HEAD
     "test": "export NODE_ENV=test && npm run dropTables && npm run migrate && nyc --reporter=html --reporter=text mocha --require @babel/register src/tests/**/*.test.js --timeout 100000 --exit",
+=======
+    "test": "npm run dropTables && npm run migrate && npx nyc --reporter=html --reporter=text mocha --require @babel/register src/tests/**/*.test.js --timeout 100000 --exit",
+>>>>>>> e48e093 (feature(login): add login)
     "startDev": "nodemon --exec babel-node src/server.js",
     "lint": "./node_modules/.bin/eslint src/**/*.js",
     "lint:fixIssues": "./node_modules/.bin/eslint . --fix",

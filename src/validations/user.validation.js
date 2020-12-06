@@ -82,7 +82,7 @@ export const validateSignup = (req, res, next) => {
 
 	const { error } = schema.validate(req.body);
 	if (error) {
-		const errors = error.details.map(e => e.message);
+		const errors = error.details.map(err => err.message);
 		ResponseService.setError(400, errors);
 		return ResponseService.send(res);
 	}

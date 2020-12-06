@@ -17,4 +17,7 @@ script:
   - npm test
 after_success:
   - npm run coverage
+<<<<<<< HEAD
   
+=======
+>>>>>>> e48e093 (feature(login): add login)
