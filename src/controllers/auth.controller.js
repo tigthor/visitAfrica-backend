@@ -28,7 +28,7 @@ class AuthController {
 			email: req.body.email
 		}));
 
-		ResponseService.setSuccess(201, 'User Successfully Created', {
+		const userData = {
 			id: newUser.id,
 			fullname: newUser.fullname,
 			email: newUser.email,
@@ -41,6 +41,10 @@ class AuthController {
 			role: newUser.role,
 			createdAt: newUser.createdAt,
 			updatedAt: newUser.updatedAt
+		};
+		ResponseService.setSuccess(201, 'User Successfully Created', {
+			user: userData,
+			token: TokenService.generateToken(userData)
 		});
 		return ResponseService.send(res);
 	}

@@ -16,7 +16,7 @@ class TokenService {
 	 * @param {object} token
 	 * @return {object} this is accept a token and decode it according to the secret
 	 */
-	static async verifyToken(token) {
+	static verifyToken(token) {
 		return jwt.verify(token, process.env.SECRET, (err, decoded) => {
 			if (err) {
 				return err;
