@@ -1,11 +1,13 @@
 import { Router } from 'express';
 import AuthController from '../controllers/auth.controller';
+import { checkIfEmailExist } from '../middlewares/user.midleware';
+import { validateSignup } from '../validations/user.validation';
 
 const router = Router();
 
 router.post(
 	'/signup',
-	AuthController.signup,
+	validateSignup, checkIfEmailExist, AuthController.signup,
 );
 
 export default router;

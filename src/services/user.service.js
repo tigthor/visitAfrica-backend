@@ -13,6 +13,14 @@ class UserService {
 	static createUser(user) {
 		return User.create(user);
 	}
+
+	/**
+	 * @param {object} attribute
+	 * @returns {object} getting a user that is already logged in
+	 */
+	static findUserByAttribute(attribute) {
+		return User.findOne({ where: attribute });
+	}
 }
 
 export default UserService;

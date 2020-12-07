@@ -1,17 +1,20 @@
 language: node_js
 node_js:
   - "stable"
+install:
+  - npm i
+cache:
+  directories:
+    - node_modules
 services:
   - postgresql
-env:
-global:
-  - NODE_ENV=test  
-
+addons:
+  postgresql: "9.4"
 before_script:
-  - psql -c 'CREATE DATABASE visitAfrica;' -U postgres
-cache: npm
-install: npm install
+  - psql -c "CREATE DATABASE visitafrica;" -U postgres
+  - npm run migrate
 script:
   - npm test
 after_success:
-- npm run coveralls
+  - npm run coverage
+  

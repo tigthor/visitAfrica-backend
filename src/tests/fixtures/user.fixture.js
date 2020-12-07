@@ -9,3 +9,23 @@ export const user = {
 	country: 'kenya',
 	city: 'mombasa'
 };
+
+export const userValidate = {
+	fullname: 'Alan Shearer',
+	password: 'InWebThereisaserverticktockkk1!!21',
+	birthdate: '2020-01-01',
+	gender: 'male',
+	tel: '0789000000',
+	country: 'kenya',
+	city: 'mombasa'
+};
+export const userEmailExist = {
+	fullname: 'Alan Shearer',
+	email: 'tigthor1337@gmail.com',
+	password: 'InWebThereisaserverticktockkk1!!21',
+	birthdate: '2020-01-01',
+	gender: 'male',
+	tel: '0789000000',
+	country: 'kenya',
+	city: 'mombasa'
+};
