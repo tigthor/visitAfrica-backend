@@ -1,4 +1,3 @@
-/* eslint-disable require-jsdoc */
 import BcryptService from '../services/bcrypt.service';
 import TokenService from '../services/token.service';
 import MailService from '../services/mail.service';
@@ -6,15 +5,14 @@ import ResponseService from '../services/response.service';
 import UserService from '../services/user.service';
 
 /**
- *  AuthController
+ * This is the authentication class
  */
 class AuthController {
 	/**
 	 * @param {object} req
 	 * @param {object} res
-	 * @returns {object} this is going to create a user
+	 * @return {object} this is going to create a user
 	 */
-
 	static async signup(req, res) {
 		const newUser = await UserService.createUser({
 			fullname: req.body.fullname,
@@ -30,7 +28,7 @@ class AuthController {
 			email: req.body.email
 		}));
 
-		ResponseService.setSuccess(201, 'User Successfully Created', {
+		const userData = {
 			id: newUser.id,
 			fullname: newUser.fullname,
 			email: newUser.email,
@@ -43,6 +41,10 @@ class AuthController {
 			role: newUser.role,
 			createdAt: newUser.createdAt,
 			updatedAt: newUser.updatedAt
+		};
+		ResponseService.setSuccess(201, 'User Successfully Created', {
+			user: userData,
+			token: TokenService.generateToken(userData)
 		});
 		return ResponseService.send(res);
 	}

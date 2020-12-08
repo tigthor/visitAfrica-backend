@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import Joi from 'joi';
 import ResponseService from '../services/response.service';
 
@@ -88,5 +87,33 @@ export const validateSignup = (req, res, next) => {
 		return ResponseService.send(res);
 	}
 
+	next();
+};
+
+export const validateProfilePage = (req, res, next) => {
+	const schema = Joi.object({
+		fullname: Joi.string().optional().trim().messages({
+			'string.empty': 'fullname is not allowed to be empty'
+		}),
+		gender: Joi.string().optional().trim().messages({
+			'string.empty': 'gender is not allowed to be empty'
+		}),
+		country: Joi.string().optional().trim().messages({
+			'string.empty': 'country is not allowed to be empty'
+		}),
+		tel: Joi.string().trim().regex(/^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/).messages({
+			'string.empty': 'tel is not allowed to be empty',
+			'phoneNumber.invalid': 'tel did not seem to be a phone number'
+		}),
+		city: Joi.string().optional().trim().messages({
+			'string.empty': 'city is not allowed to be empty'
+		})
+	}).options({ abortEarly: false });
+	const { error } = schema.validate(req.body);
+	if (error) {
+		const errors = error.details.map(err => err.message);
+		ResponseService.setError(400, errors);
+		return ResponseService.send(res);
+	}
 	next();
 };

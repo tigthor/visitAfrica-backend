@@ -1,12 +1,15 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../../server';
-import { user, userValidate, userEmailExist } from '../fixtures/user.fixture';
+import { user, userValidate, userEmailExist, createUser } from '../fixtures/user.fixture';
 
 chai.should();
 chai.use(chaiHttp);
 
 describe('/POST signup and emailsending on success', () => {
+	before(async () => {
+		await createUser();
+	});
 	it('Should register a user and send email on success', (done) => {
 		chai.request(app)
 			.post('/api/auth/signup')
