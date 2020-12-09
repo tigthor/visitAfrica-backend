@@ -1,14 +1,21 @@
 /* eslint-disable import/named */
 import { Router } from 'express';
 import AuthController from '../controllers/auth.controller';
-import { checkIfEmailExist } from '../middlewares/user.middleware';
-import { validateSignup } from '../validations/user.validation';
+import { checkIfEmailExist, checkUserCredentials } from '../middlewares/user.middleware';
+import { validateSignup, validateLoginBody } from '../validations/user.validation';
 
 const router = Router();
 
 router.post(
 	'/signup',
 	validateSignup, checkIfEmailExist, AuthController.signup,
+);
+
+router.post(
+	'/login',
+	validateLoginBody,
+	checkUserCredentials,
+	AuthController.login,
 );
 
 export default router;

@@ -5,7 +5,6 @@ import { user, userValidate, userEmailExist, createUser } from '../fixtures/user
 
 chai.should();
 chai.use(chaiHttp);
-
 describe('/POST signup and emailsending on success', () => {
 	before(async () => {
 		await createUser();
@@ -21,7 +20,6 @@ describe('/POST signup and emailsending on success', () => {
 				done();
 			});
 	});
-
 	it('Should validate user inputs', (done) => {
 		chai.request(app)
 			.post('/api/auth/signup')

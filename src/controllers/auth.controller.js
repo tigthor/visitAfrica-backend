@@ -48,6 +48,22 @@ class AuthController {
 		});
 		return ResponseService.send(res);
 	}
+
+	/**
+	 *
+	 * @param {object} req
+	 * @param {object} res
+	 * @returns {object} the user will login successfully
+	 */
+	static async login(req, res) {
+		const user = await UserService.findUserByAttribute({ email: req.body.email });
+		const userData = { ...user.dataValues };
+		delete userData.password;
+		ResponseService.setSuccess(200, 'successfully logged in', {
+			token: TokenService.generateToken(userData),
+		});
+		return ResponseService.send(res);
+	}
 }
 
 export default AuthController;
