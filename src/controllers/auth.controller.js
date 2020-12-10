@@ -76,6 +76,22 @@ class AuthController {
 		ResponseService.setSuccess(200, 'User Successfully verified');
 		return ResponseService.send(res);
 	}
+
+	/**
+	 * @param {object} req
+	 * @param {object} res
+	 * @returns {object} this is Oauth controller
+	 */
+	static async loginWithSocialMedia(req, res) {
+		const user = await UserService.findUserByAttribute({
+			email: req.user.email,
+		});
+		const token = TokenService.generateToken({
+			id: user.id,
+		});
+		ResponseService.setSuccess(200, 'you have successful logged in', token);
+		return ResponseService.send(res);
+	}
 }
 
 export default AuthController;

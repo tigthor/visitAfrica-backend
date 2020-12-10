@@ -17,8 +17,8 @@ const getUserTest = () => {
 					res.body.should.be.an('object');
 					res.should.have.status(200);
 					res.body.should.have.property('message');
-					done();
 				});
+			done();
 		});
 		it('should check if the user has invalid token', (done) => {
 			chai
@@ -29,8 +29,8 @@ const getUserTest = () => {
 					res.body.should.be.an('object');
 					res.should.have.status(401);
 					res.body.should.have.property('message');
-					done();
 				});
+			done();
 		});
 		it('should check if the user set expired token', (done) => {
 			chai
@@ -41,8 +41,8 @@ const getUserTest = () => {
 					res.body.should.be.an('object');
 					res.should.have.status(401);
 					res.body.should.have.property('message');
-					done();
 				});
+			done();
 		});
 	});
 };
