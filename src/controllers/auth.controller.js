@@ -64,6 +64,18 @@ class AuthController {
 		});
 		return ResponseService.send(res);
 	}
+
+	/**
+	 * @param {object} req
+	 * @param {object} res
+	 * @return {object} this is going to verify a user
+	 */
+	static async verifyUser(req, res) {
+		const decodedToken = await TokenService.verifyToken(req.query.token);
+		UserService.updateUserByAttribute({ email: decodedToken.email }, { isVerified: true });
+		ResponseService.setSuccess(200, 'User Successfully verified');
+		return ResponseService.send(res);
+	}
 }
 
 export default AuthController;

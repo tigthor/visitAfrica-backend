@@ -1,3 +1,4 @@
+ 
 language: node_js
 node_js:
   - "stable"
@@ -16,4 +17,5 @@ before_script:
 script:
   - npm test
 after_success:
+
   - npm run coverage

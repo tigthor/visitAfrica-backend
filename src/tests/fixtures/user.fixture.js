@@ -1,10 +1,11 @@
 import TokenService from '../../services/token.service';
 import UserService from '../../services/user.service';
+import BcryptService from '../../services/bcrypt.service';
 
-export const user = {
+export const userToVerify = {
 	fullname: 'Alan Shearer',
 	email: 'tigthor1337@gmail.com',
-	password: 'InWebThereisaserverticktockkk1!!21',
+	password: BcryptService.hashPassword('InWebThereisaserverticktockkk1!!21'),
 	birthdate: '2020-01-01',
 	gender: 'male',
 	tel: '0789000000',
@@ -58,6 +59,8 @@ export const token = TokenService.generateToken({
 	createdAt: newUser.createdAt,
 	updatedAt: newUser.updatedAt
 });
+
+export const tokenToVerify = TokenService.generateToken({ email: userToVerify.email });
 
 export const fakeToken = 'eyJhbGciOiJIUzI1NiIsInRcCI6IkpXVCJ9.eyJpZCI6NTEsImZ1bGxuYW1lIjoiTG91YW5nZSBNdWhhd2UiLCJlbWFpbCI6IkxtdWhhd2VuQGdtYWlsLmNvbSIsImJpcnRoZGF0ZSI6IjE5OTAtMDEtMDEiLCJnZW5kZXIiOiJmZW1hbGUiLCJ0ZWwiOiIwNzAwMDAwMDAwIiwiY291bnRyeSI6InppbWJhYndlIiwiY2l0eSI6IktpZ2FsaSIsInByb2ZpbGVQaWN0dXJlIjoiYXZhdGFyLmpwZyIsInJvbGUiOiJSZXF1ZXN0ZXIiLCJjcmVhdGVkQXQiOiIyMDIwLTEyLTA1VDEyOjU3OjI2Ljg0OVoiLCJ1cGRhdGVkQXQiOiIyMDIwLTEyLTA1VDEyOjU3OjI2Ljg0OVoiLCJpYXQiOjE2MDcxNzMwNDcsImV4cCI6MTYwNzI0NTA0N30.FrK9rssbqZEgvcEuRlMyfAWt9ThurBQ1FmLfOBO9YsU';
 
