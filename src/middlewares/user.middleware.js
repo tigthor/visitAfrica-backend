@@ -4,6 +4,12 @@ import ResponseService from '../services/response.service';
 import UserService from '../services/user.service';
 import BcryptService from '../services/bcrypt.service';
 
+/**
+     * @param {object} req
+     * @param {object} res
+   * @param {object} next
+     * @return {object} this is going to verify a user
+     */
 export const checkIfEmailExist = async (req, res, next) => {
 	const user = await UserService.findUserByAttribute({ email: req.body.email });
 	if (user) {
@@ -27,6 +33,25 @@ export const checkUserCredentials = async (req, res, next) => {
 
 	if (!BcryptService.comparePassword(req.body.password, user.password)) {
 		ResponseService.setError(401, 'Invalid email or password');
+		return ResponseService.send(res);
+	}
+	next();
+};
+export const checkUserIfExist = async (req, res, next) => {
+	const user = await UserService.findUserByProperty({ id: req.params.userId });
+
+	if (req.userData.role !== 'superAdmin') {
+		ResponseService.setError(403, 'You can not perform this task');
+		return ResponseService.send(res);
+	}
+
+	if (!user) {
+		ResponseService.setError(404, 'We can not find user in the system');
+		return ResponseService.send(res);
+	}
+
+	if (user.role === 'superAdmin') {
+		ResponseService.setError(400, ' super admin role cant be change');
 		return ResponseService.send(res);
 	}
 

@@ -42,6 +42,7 @@ class AuthController {
 			createdAt: newUser.createdAt,
 			updatedAt: newUser.updatedAt
 		};
+
 		ResponseService.setSuccess(201, 'User Successfully Created', {
 			user: userData,
 			token: TokenService.generateToken(userData)

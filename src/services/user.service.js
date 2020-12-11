@@ -1,6 +1,7 @@
 import models from '../database/models';
 
-const { User } = models;
+const { User, Role } = models;
+
 /**
  * this is a user service
  */
@@ -45,8 +46,14 @@ class UserService {
 	 * @param {object} property
 	 * @returns {object} this return a given user based by property
 	 */
-	static findByProperty(property) {
+	static findUserByProperty(property) {
 		return User.findOne({ where: property });
 	}
+
+	/**
+	 *
+	 * @param {object} property
+	 * @returns {object} this return a given user based by property
+	 */
 }
 export default UserService;
