@@ -1,4 +1,5 @@
 /* eslint-disable import/prefer-default-export */
+/* eslint-disable no-underscore-dangle */
 import ResponseService from '../services/response.service';
 import UserService from '../services/user.service';
 import BcryptService from '../services/bcrypt.service';
@@ -30,4 +31,46 @@ export const checkUserCredentials = async (req, res, next) => {
 	}
 
 	next();
+};
+
+/**
+ * @param  {string} accessToken
+ * @param  {string} refreshToken
+ * @param  {object} profile
+ * @param  {function} done
+ * @returns {object} this function get profile for a google user, and create a user if not exits
+ */
+export const googleAuth = async (accessToken, refreshToken, profile, done) => {
+	const user = await UserService.findUserByAttribute({ email: profile._json.email });
+	const newUser = {
+		fullname: profile.displayName,
+		email: profile._json.email,
+		password: BcryptService.hashPassword(Math.random().toString(36)),
+	};
+	if (!user) {
+		await UserService.createUser(newUser);
+	}
+	done(null, newUser);
+};
+
+/**
+ * @param  {string} accessToken
+ * @param  {string} refreshToken
+ * @param  {object} profile
+ * @param  {function} done
+ * @returns {object} this function get profile for a facebook user, and create a user if not exits
+ */
+export const facebookAuth = async (accessToken, refreshToken, profile, done) => {
+	const user = await UserService.findUserByAttribute({ email: profile._json.email });
+
+	const newUser = {
+		fullname: profile.displayName,
+		email: profile._json.email,
+		password: BcryptService.hashPassword(Math.random().toString(36)),
+	};
+
+	if (!user) {
+		await UserService.createUser(newUser);
+	}
+	done(null, newUser);
 };
