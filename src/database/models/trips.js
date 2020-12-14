@@ -4,6 +4,9 @@ module.exports = (sequelize, DataTypes) => {
 		departureTo: DataTypes.INTEGER,
 		startingDate: DataTypes.DATE,
 		returningDate: DataTypes.DATE,
+		userId: DataTypes.INTEGER,
+		tripType: DataTypes.STRING,
+		multiCity: DataTypes.ARRAY(DataTypes.STRING),
 		reason: DataTypes.STRING,
 		status: DataTypes.STRING,
 	}, {});
