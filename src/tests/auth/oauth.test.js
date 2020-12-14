@@ -68,6 +68,8 @@ const oauthTest = () => {
 			let done;
 			facebookAuth(accessToken, refreshToken, profile, done);
 		});
+	});
+	describe('Test Facebook login', () => {
 		it('should return 201 if a new user', (done) => {
 			chai
 				.request(app)

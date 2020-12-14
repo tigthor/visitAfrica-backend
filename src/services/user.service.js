@@ -44,6 +44,7 @@ class UserService {
 	/**
 	 *
 	 * @param {object} property
+	 * @param {object} property1
 	 * @returns {object} this return a given user based by property
 	 */
 	static findUserByProperty(property) {
