@@ -47,6 +47,10 @@ export async function up(queryInterface, Sequelize) {
 			type: Sequelize.STRING,
 			defaultValue: 'avatar.jpg',
 		},
+		lineManagerId: {
+			type: Sequelize.INTEGER,
+			allowNull: true
+		},
 		role: {
 			type: Sequelize.STRING,
 			defaultValue: 'Requester',
