@@ -26,6 +26,18 @@ const userRoleTest = () => {
 				});
 			done();
 		});
+		it('Should not accept a string id', (done) => {
+			chai.request(app)
+				.patch('/api/users/role/hyacinthe')
+				.set('Authorization', `bearer ${superAdminToken}`)
+				.send(userRoleData.body)
+				.end((err, res) => {
+					res.body.should.be.an('object');
+					res.status.should.be.equal(402);
+					res.body.should.have.property('message');
+				});
+			done();
+		});
 		it('superAdmin role can not be changed', (done) => {
 			chai.request(app)
 				.patch('/api/users/role/3')

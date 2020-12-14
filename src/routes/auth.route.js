@@ -36,8 +36,8 @@ router.get(
 	AuthController.loginWithSocialMedia
 );
 router.get('/facebook', facebookAuth, passport.authenticate('facebook'));
-router.get('/test/google', fakeUser, AuthController.loginWithSocialMedia);
-router.get('/test/facebook', fakeUser, AuthController.loginWithSocialMedia);
+router.get('/test/google', fakeUser, facebookAuth, AuthController.loginWithSocialMedia);
+router.get('/test/facebook', fakeUser, googleAuth, AuthController.loginWithSocialMedia);
 
 router.get(
 	'/facebook/redirect',

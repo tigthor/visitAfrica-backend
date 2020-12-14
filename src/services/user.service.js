@@ -1,6 +1,6 @@
 import models from '../database/models';
 
-const { User, Role } = models;
+const { User } = models;
 
 /**
  * this is a user service
