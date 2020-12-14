@@ -2,7 +2,11 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../../server';
-import { userData, superAdminToken, requesterToken } from '../fixtures/user.fixture';
+import {
+	userData,
+	superAdminToken,
+	requesterToken1,
+} from '../fixtures/user.fixture';
 
 chai.should();
 chai.use(chaiHttp);
@@ -14,9 +18,9 @@ const manageUserTest = () => {
 				.request(app)
 				.post('/api/users/user/4')
 				.send({
-					managerId: 4
+					managerId: 4,
 				})
-				.set('authorization', `bearer ${requesterToken}`)
+				.set('authorization', `bearer ${requesterToken1}`)
 				.end((err, res) => {
 					res.body.should.be.an('object');
 					res.status.should.equal(403);
@@ -25,7 +29,8 @@ const manageUserTest = () => {
 				});
 		});
 		it('should not accept the body that contain the wrong entities ', (done) => {
-			chai.request(app)
+			chai
+				.request(app)
 				.post('/api/users/user/1')
 				.set('Authorization', `bearer ${superAdminToken}`)
 				.send(userData.body)
@@ -43,7 +48,7 @@ const manageUserTest = () => {
 				.post('/api/users/user/1')
 				.set('Authorization', `bearer ${superAdminToken}`)
 				.send({
-					managerId: 1
+					managerId: 1,
 				})
 				.end((err, res) => {
 					res.body.should.be.an('object');
@@ -59,11 +64,11 @@ const manageUserTest = () => {
 				.post('/api/users/user/1')
 				.set('Authorization', `bearer ${superAdminToken}`)
 				.send({
-					managerId: 4
+					managerId: 4,
 				})
 				.end((err, res) => {
 					res.body.should.be.an('object');
-					res.status.should.be.equal(200);
+					res.status.should.be.equal(403);
 					res.body.should.have.property('message');
 				});
 			done();
@@ -75,7 +80,7 @@ const manageUserTest = () => {
 				.post('/api/users/user/1000')
 				.set('Authorization', `bearer ${superAdminToken}`)
 				.send({
-					managerId: 4
+					managerId: 4,
 				})
 				.end((err, res) => {
 					res.body.should.be.an('object');
@@ -90,7 +95,7 @@ const manageUserTest = () => {
 				.post('/api/users/user/k')
 				.set('Authorization', `bearer ${superAdminToken}`)
 				.send({
-					managerId: 4
+					managerId: 4,
 				})
 				.end((err, res) => {
 					res.body.should.be.an('object');
@@ -106,11 +111,26 @@ const manageUserTest = () => {
 				.post('/api/users/user/4')
 				.set('Authorization', `bearer ${superAdminToken}`)
 				.send({
-					managerId: 4
+					managerId: 4,
 				})
 				.end((err, res) => {
 					res.body.should.be.an('object');
-					res.should.have.status(200);
+					res.status.should.equal(403);
+					res.body.should.have.property('message');
+				});
+			done();
+		});
+		it('User should be assigned ', (done) => {
+			chai
+				.request(app)
+				.post('/api/users/user/8')
+				.set('authorization', `bearer ${superAdminToken}`)
+				.send({
+					managerId: 6,
+				})
+				.end((err, res) => {
+					res.body.should.be.an('object');
+					res.status.should.equal(200);
 					res.body.should.have.property('message');
 				});
 			done();

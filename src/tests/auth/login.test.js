@@ -8,11 +8,12 @@ chai.use(chaiHttp);
 const loginTest = () => {
 	describe('/POST login with email and password', () => {
 		it('Should be successfully logged in', (done) => {
-			chai.request(app)
+			chai
+				.request(app)
 				.post('/api/auth/login')
 				.send({
 					email: 'loua@gmail.com',
-					password: 'GoodG@12'
+					password: 'GoodG@12',
 				})
 				.end((err, res) => {
 					res.body.should.be.an('object');
@@ -23,11 +24,12 @@ const loginTest = () => {
 		});
 
 		it('should not pass with the wrong information', (done) => {
-			chai.request(app)
+			chai
+				.request(app)
 				.post('/api/auth/login')
 				.send({
 					email: 'loua@gm.com',
-					password: 'GoodG@12'
+					password: 'GoodG@12',
 				})
 				.end((err, res) => {
 					res.body.should.be.an('object');
@@ -38,11 +40,12 @@ const loginTest = () => {
 		});
 
 		it('should a valid email', (done) => {
-			chai.request(app)
+			chai
+				.request(app)
 				.post('/api/auth/login')
 				.send({
 					email: 'louagmail.com',
-					password: 'GoodG@12'
+					password: 'GoodG@12',
 				})
 				.end((err, res) => {
 					res.body.should.be.an('object');
@@ -53,11 +56,12 @@ const loginTest = () => {
 		});
 
 		it('should return a status 401 for non_verified user', (done) => {
-			chai.request(app)
+			chai
+				.request(app)
 				.post('/api/auth/login')
 				.send({
 					email: 'loua1@gmail.com',
-					password: 'GoodG@12'
+					password: 'GoodG@12',
 				})
 				.end((err, res) => {
 					res.body.should.be.an('object');
@@ -68,11 +72,12 @@ const loginTest = () => {
 		});
 
 		it('should return Incorrect credentials', (done) => {
-			chai.request(app)
+			chai
+				.request(app)
 				.post('/api/auth/login')
 				.send({
 					email: 'loua@gmail.com',
-					password: 'GoodG@1'
+					password: 'GoodG@1',
 				})
 				.end((err, res) => {
 					res.body.should.be.an('object');

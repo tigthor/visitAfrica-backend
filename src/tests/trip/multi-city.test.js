@@ -39,7 +39,7 @@ const multiCityTest = () => {
 				.send(multiCity)
 				.end((err, res) => {
 					res.body.should.be.an('object');
-					res.should.have.status(201);
+					res.should.have.property('status', 201);
 					res.body.should.have.property('message');
 				});
 			done();
@@ -53,6 +53,19 @@ const multiCityTest = () => {
 				.end((err, res) => {
 					res.body.should.be.an('object');
 					res.should.have.status(409);
+					res.body.should.have.property('message');
+				});
+			done();
+		});
+		it('Should validate duplication', (done) => {
+			chai
+				.request(app)
+				.post('/api/trip/multi-city')
+				.set('authorization', `bearer ${multiCityToken}`)
+				.send(wrongMultiCityLocation)
+				.end((err, res) => {
+					res.body.should.be.an('object');
+					res.should.have.status(402);
 					res.body.should.have.property('message');
 				});
 			done();

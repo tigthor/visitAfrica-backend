@@ -2,7 +2,15 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../../server';
-import { userRoleData, userToUpdateRole, superAdmin, createUser, superAdminToken, token, validateUserRoleBody } from '../fixtures/user.fixture';
+import {
+	userRoleData,
+	userToUpdateRole,
+	superAdmin,
+	createUser,
+	superAdminToken,
+	token,
+	validateUserRoleBody,
+} from '../fixtures/user.fixture';
 
 chai.should();
 chai.use(chaiHttp);
@@ -13,7 +21,8 @@ const userRoleTest = () => {
 			createUser(superAdmin);
 		});
 		it('Should update a user', (done) => {
-			chai.request(app)
+			chai
+				.request(app)
 				.patch('/api/users/role/1')
 				.set('Authorization', `Barer ${superAdminToken}`)
 				.send(userRoleData.body)
@@ -25,7 +34,8 @@ const userRoleTest = () => {
 			done();
 		});
 		it('Should not accept a string id', (done) => {
-			chai.request(app)
+			chai
+				.request(app)
 				.patch('/api/users/role/hyacinthe')
 				.set('Authorization', `Bearer ${superAdminToken}`)
 				.send(userRoleData.body)
@@ -37,7 +47,8 @@ const userRoleTest = () => {
 			done();
 		});
 		it('superAdmin role can not be changed', (done) => {
-			chai.request(app)
+			chai
+				.request(app)
 				.patch('/api/users/role/3')
 				.set('Authorization', `Bearer ${superAdminToken}`)
 				.send(userRoleData.body)
@@ -49,7 +60,8 @@ const userRoleTest = () => {
 			done();
 		});
 		it('we can not find user', (done) => {
-			chai.request(app)
+			chai
+				.request(app)
 				.patch('/api/users/role/50')
 				.set('Authorization', `Bearer ${superAdminToken}`)
 				.send(userRoleData.body)
@@ -61,7 +73,8 @@ const userRoleTest = () => {
 			done();
 		});
 		it('You can not perform this task', (done) => {
-			chai.request(app)
+			chai
+				.request(app)
 				.patch('/api/users/role/1')
 				.set('Authorization', `bearer ${token}`)
 				.send(userRoleData.body)
@@ -72,7 +85,8 @@ const userRoleTest = () => {
 			done();
 		});
 		it('You can not perform this task', (done) => {
-			chai.request(app)
+			chai
+				.request(app)
 				.patch('/api/users/role/1')
 				.set('Authorization', `Bearer ${token}`)
 				.send(userRoleData.body)
@@ -83,7 +97,8 @@ const userRoleTest = () => {
 			done();
 		});
 		it('should check if the user input is incorrect', (done) => {
-			chai.request(app)
+			chai
+				.request(app)
 				.patch('/api/users/role/1')
 				.set('Authorization', `bearer ${token}`)
 				.send(validateUserRoleBody)

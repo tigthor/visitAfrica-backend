@@ -22,6 +22,6 @@ getUserTest();
 updateUserProfileTest();
 manageUserTest();
 resetPassword();
-tripTest();
 multiCityTest();
 updateTripTest();
+tripTest();

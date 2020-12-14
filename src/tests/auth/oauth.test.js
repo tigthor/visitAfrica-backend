@@ -37,7 +37,7 @@ const oauthTest = () => {
 				});
 			done();
 		});
-		it('should access google oauth route', (done) => {
+		it.skip('should access google oauth route', (done) => {
 			chai
 				.request(app)
 				.get('/api/auth/google')

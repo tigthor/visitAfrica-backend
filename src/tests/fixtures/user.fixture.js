@@ -9,7 +9,7 @@ export const userToUpdateRole = {
 	gender: 'male',
 	tel: '0789000000',
 	country: 'kenya',
-	city: 'mombasa'
+	city: 'mombasa',
 };
 export const userToVerify = {
 	fullname: 'Alan Shearer',
@@ -70,116 +70,116 @@ export const newUser = {
 export const multiCity = {
 	departureFrom: '1',
 	departureTo: '2',
-	startingDate: '2020-12-25',
-	returningDate: '2020-12-30',
+	startingDate: '2022-12-25',
+	returningDate: '2022-12-30',
 	multiCity: [
 		{
 			name: 'Hawai',
-			startingDate: '2020-12-26',
-			returningDate: '2020-12-30'
+			startingDate: '2022-12-26',
+			returningDate: '2022-12-30',
 		},
 		{
 			name: 'Budapest',
-			startingDate: '2020-12-26',
-			returningDate: '2020-12-30'
+			startingDate: '2022-12-26',
+			returningDate: '2022-12-30',
 		},
 		{
 			name: 'Budapest',
-			startingDate: '2020-12-26',
-			returningDate: '2020-12-30'
-		}
+			startingDate: '2022-12-26',
+			returningDate: '2022-12-30',
+		},
 	],
-	reason: 'travel'
+	reason: 'travel',
 };
 
 export const multiCityFalseId = {
 	departureFrom: '1000',
 	departureTo: '20000',
-	startingDate: '2020-12-25',
-	returningDate: '2020-12-30',
+	startingDate: '2022-12-25',
+	returningDate: '2022-12-30',
 	multiCity: [
 		{
 			name: 'Hawai',
-			startingDate: '2020-12-26',
-			returningDate: '2020-12-30'
+			startingDate: '2022-12-26',
+			returningDate: '2022-12-30',
 		},
 		{
 			name: 'Budapest',
-			startingDate: '2020-12-26',
-			returningDate: '2020-12-30'
+			startingDate: '2022-12-26',
+			returningDate: '2022-12-30',
 		},
 		{
 			name: 'Budapest',
-			startingDate: '2020-12-26',
-			returningDate: '2020-12-30'
-		}
+			startingDate: '2022-12-26',
+			returningDate: '2022-12-30',
+		},
 	],
-	reason: 'travel'
+	reason: 'travel',
 };
 
 export const wrongMultiCityArray = {
-	departureFrom: '1',
-	departureTo: '2',
-	startingDate: '2020-12-25',
-	returningDate: '2020-12-30',
+	departureFrom: 1,
+	departureTo: 2,
+	startingDate: '2022-12-25',
+	returningDate: '2022-12-30',
 	multiCity: [
 		{
 			name: 'Budapest',
 			startingDate: '2020-12-26',
-			returningDate: '2020-12-30'
-		}
+			returningDate: '2020-12-30',
+		},
 	],
-	reason: 'travel'
+	reason: 'travel',
 };
 
 export const wrongMultiCityLocation = {
-	departureFrom: '1',
-	departureTo: '1',
-	startingDate: '2020-12-20',
-	returningDate: '2020-12-30',
+	departureFrom: 1,
+	departureTo: 1,
+	startingDate: '2022-12-20',
+	returningDate: '2022-12-30',
 	multiCity: [
 		{
 			name: 'Budapest',
-			startingDate: '2020-12-22',
-			returningDate: '2020-12-30'
+			startingDate: '2022-12-22',
+			returningDate: '2022-12-30',
 		},
 		{
 			name: 'Budapest',
-			startingDate: '2020-12-22',
-			returningDate: '2020-12-30'
+			startingDate: '2022-12-22',
+			returningDate: '2022-12-30',
 		},
 		{
 			name: 'Budapest',
-			startingDate: '2020-12-22',
-			returningDate: '2020-12-30'
-		}
+			startingDate: '2022-12-22',
+			returningDate: '2022-12-30',
+		},
 	],
-	reason: 'travel'
+	reason: 'travel',
 };
 
 export const wrongMultiCityLocationSecond = {
 	departureFrom: '5',
 	departureTo: '5',
-	startingDate: '2020-12-20',
-	returningDate: '2020-12-30',
+	startingDate: '2022-12-20',
+	returningDate: '2022-12-30',
 	multiCity: [
 		{
 			name: 'Budapest',
-			startingDate: '2020-12-22',
-			returningDate: '2020-12-30'
+			startingDate: '2022-12-22',
+			returningDate: '2022-12-30',
 		},
 		{
 			name: 'Budapest',
-			startingDate: '2020-12-22',
-			returningDate: '2020-12-30'
+			startingDate: '2022-12-22',
+			returningDate: '2022-12-30',
 		},
 		{
 			name: 'Budapest',
-			startingDate: '2020-12-22',
-			returningDate: '2020-12-30'
-		}
+			startingDate: '2022-12-22',
+			returningDate: '2022-12-30',
+		},
 	],
-	reason: 'travel'
+	reason: 'travel',
 };
 
 export const wrongMultiCityDate = {
@@ -191,20 +191,20 @@ export const wrongMultiCityDate = {
 		{
 			name: 'Budapest',
 			startingDate: '2020-12-20',
-			returningDate: '2020-12-30'
+			returningDate: '2020-12-30',
 		},
 		{
 			name: 'Budapest',
 			startingDate: '2020-12-20',
-			returningDate: '2020-12-30'
+			returningDate: '2020-12-30',
 		},
 		{
 			name: 'Budapest',
 			startingDate: '2020-12-20',
-			returningDate: '2020-12-30'
-		}
+			returningDate: '2020-12-30',
+		},
 	],
-	reason: 'travel'
+	reason: 'travel',
 };
 
 export const wrongMultiCity = {
@@ -216,21 +216,22 @@ export const wrongMultiCity = {
 		{
 			name: 'Budapest',
 			startingDate: '2020-12-20',
-			returningDate: '2020-12-00'
+			returningDate: '2020-12-00',
 		},
 		{
 			name: 'Budapest',
 			startingDate: '2020-12-20',
-			returningDate: '2020-12-30'
+			returningDate: '2020-12-30',
 		},
 		{
 			name: 'Budapest',
 			startingDate: '2020-12-20',
-			returningDate: '2020-12-30'
-		}
+			returningDate: '2020-12-30',
+		},
 	],
-	reason: 'travel'
+	reason: 'travel',
 };
+export const mockToken = TokenService.generateToken(newUser);
 
 export const token = TokenService.generateToken({
 	id: newUser.id,
@@ -246,7 +247,7 @@ export const token = TokenService.generateToken({
 	createdAt: newUser.createdAt,
 	updatedAt: newUser.updatedAt,
 });
-export const requesterToken = TokenService.generateToken({
+export const requesterToken1 = TokenService.generateToken({
 	id: 1,
 	fullname: 'LouangeMu',
 	email: 'loua@gmail.com',
@@ -257,12 +258,11 @@ export const requesterToken = TokenService.generateToken({
 	city: 'kigali',
 	profilePicture: '078474622',
 	role: 'Requester',
-	isVerified: true });
+	isVerified: true,
+});
 
-export const requesterMockToken = TokenService.generateToken({
-	id: 2,
-	fullname: 'LouangeMu',
-	email: 'loua@gmail.com',
+export const altRequesterToken = TokenService.generateToken({
+	id: 5,
 	gender: 'female',
 	birthdate: '2002-10-10',
 	tel: '078474622',
@@ -270,9 +270,25 @@ export const requesterMockToken = TokenService.generateToken({
 	city: 'kigali',
 	profilePicture: '078474622',
 	role: 'Requester',
-	isVerified: true });
+	isVerified: true,
+});
 
-export const tokenToVerify = TokenService.generateToken({ email: userToVerify.email });
+export const requesterMockToken = TokenService.generateToken({
+	id: 2,
+	fullname: 'LouangeMu',
+	gender: 'female',
+	birthdate: '2002-10-10',
+	tel: '078474622',
+	country: 'Rwanda',
+	city: 'kigali',
+	profilePicture: '078474622',
+	role: 'Requester',
+	isVerified: true,
+});
+
+export const tokenToVerify = TokenService.generateToken({
+	email: userToVerify.email,
+});
 export const facebookFakeUser = {
 	id: '1199970126416029',
 	name: {
@@ -344,42 +360,42 @@ export const expiredToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZn
 export const userRoleData = {
 	id: '1',
 	body: {
-		role: 'superAdmin'
-	}
+		role: 'superAdmin',
+	},
 };
 
 export const userData = {
 	id: '1',
 	body: {
-		role: 'superAdmin'
-	}
+		role: 'superAdmin',
+	},
 };
 export const createUser = async () => {
 	await UserService.createUser(newUser);
 };
 
 export const forgetPassword = {
-	email: 'BMugwaneza720@daviscollege.com'
+	email: 'BMugwaneza720@daviscollege.com',
 };
 
 export const userToForgetPassword = {
-	email: 'tigthor1337@gmail.com'
+	email: 'tigthor1337@gmail.com',
 };
 export const passwordMatch = {
-	password: 'Lulu@123',
-	confirmPassword: 'Lulu@123'
+	password: 'Lulu@1230!',
+	confirmPassword: 'Lulu@1230!',
 };
 export const passwordDonotMatch = {
 	password: 'Lulu@1237',
-	confirmPassword: 'Lulu@123556'
+	confirmPassword: 'Lulu@123556',
 };
 export const validate = {
 	password: 'ggggggg',
-	confirmPassword: 'ghshsnnn'
+	confirmPassword: 'ghshsnnn',
 };
 export const validateUserRoleBody = {
 	userId: 'hhh',
-	role: ' '
+	role: ' ',
 };
 
 export const multiCityToken = TokenService.generateToken({
@@ -402,8 +418,8 @@ export const forgotPasswordToken = TokenService.generateToken(forgetPassword);
 export const returnTrip = {
 	departureFrom: 'kakiru',
 	departureTo: 'rubavu',
-	startingDate: '2020-12-30',
-	returningDate: '2021-01-01',
+	startingDate: '2022-12-30',
+	returningDate: '2023-01-01',
 	reason: 'vvv',
 };
 
@@ -416,7 +432,7 @@ export const wrongReturnTripLocation = {
 };
 
 export const userToken = TokenService.generateToken({
-	id: 1,
+	id: 3,
 	fullname: 'LouangeMu',
 	email: 'loua@gmail.com',
 	password: '$2b$10$YaouW1yQ1dwhk.OU0TdN0eoIjwcaaq03XzFL.oZnaiVVHFFpdSom.',
@@ -428,8 +444,6 @@ export const userToken = TokenService.generateToken({
 	profilePicture: '078474622',
 	role: 'Requester',
 	isVerified: true,
-	createdAt: new Date(),
-	updatedAt: new Date(),
 });
 export const wrongReturnTrip = {
 	departureFrom: '',
