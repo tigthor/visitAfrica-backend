@@ -34,16 +34,19 @@ export const userValidate = {
 };
 
 export const superAdmin = {
-	fullname: 'Hyacinthe Mutoni',
-	email: 'hyacinthe@daviscollege.com',
-	password: 'InWebThereisaserverticktockkk1!!21',
-	birthdate: '2020-01-01',
+	fullname: 'LouangeMu',
+	email: 'loua@gmail.com',
+	password: '$2b$10$YaouW1yQ1dwhk.OU0TdN0eoIjwcaaq03XzFL.oZnaiVVHFFpdSom.',
+	gender: 'female',
+	birthdate: '2002-10-10',
+	tel: '078474622',
+	country: 'Rwanda',
+	city: 'kigali',
+	profilePicture: '078474622',
 	role: 'superAdmin',
 	isVerified: true,
-	gender: 'male',
-	tel: '0789000000',
-	country: 'Rwanda',
-	city: 'kigali'
+	createdAt: new Date(),
+	updatedAt: new Date(),
 };
 
 export const userEmailExist = {
@@ -149,11 +152,32 @@ export const fakeUser = (req, res, next) => {
 };
 export const superAdminToken = TokenService.generateToken(superAdmin);
 
+export const requesterToken = TokenService.generateToken({
+	fullname: 'LouangeMu',
+	email: 'loua@gmail.com',
+	password: '$2b$10$YaouW1yQ1dwhk.OU0TdN0eoIjwcaaq03XzFL.oZnaiVVHFFpdSom.',
+	gender: 'female',
+	birthdate: '2002-10-10',
+	tel: '078474622',
+	country: 'Rwanda',
+	city: 'kigali',
+	profilePicture: '078474622',
+	role: 'Requester',
+	isVerified: true,
+});
+
 export const fakeToken = 'eyJhbGciOiJIUzI1NiIsInRcCI6IkpXVCJ9.eyJpZCI6NTEsImZ1bGxuYW1lIjoiTG91YW5nZSBNdWhhd2UiLCJlbWFpbCI6IkxtdWhhd2VuQGdtYWlsLmNvbSIsImJpcnRoZGF0ZSI6IjE5OTAtMDEtMDEiLCJnZW5kZXIiOiJmZW1hbGUiLCJ0ZWwiOiIwNzAwMDAwMDAwIiwiY291bnRyeSI6InppbWJhYndlIiwiY2l0eSI6IktpZ2FsaSIsInByb2ZpbGVQaWN0dXJlIjoiYXZhdGFyLmpwZyIsInJvbGUiOiJSZXF1ZXN0ZXIiLCJjcmVhdGVkQXQiOiIyMDIwLTEyLTA1VDEyOjU3OjI2Ljg0OVoiLCJ1cGRhdGVkQXQiOiIyMDIwLTEyLTA1VDEyOjU3OjI2Ljg0OVoiLCJpYXQiOjE2MDcxNzMwNDcsImV4cCI6MTYwNzI0NTA0N30.FrK9rssbqZEgvcEuRlMyfAWt9ThurBQ1FmLfOBO9YsU';
 
 export const expiredToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZnVsbG5hbWUiOiJBbGFuIFNoZWFyZXIiLCJlbWFpbCI6InRpZ3Rob3IxMzM3QGdtYWlsLmNvbSIsImJpcnRoZGF0ZSI6IjIwMjAtMDEtMDEiLCJnZW5kZXIiOiJtYWxlIiwidGVsIjoiMDc4OTAwMDAwMCIsImNvdW50cnkiOiJrZW55YSIsImNpdHkiOiJtb21iYXNhIiwiaWF0IjoxNjA3MTc0MzE4LCJleHAiOjE2MDcxNzQzMjN9.KDmaQt0r3kVbkeAnxWcmjGOWjZYnR4PIDT9QhwF1JSE';
 
 export const userRoleData = {
+	id: '1',
+	body: {
+		role: 'superAdmin'
+	}
+};
+
+export const userData = {
 	id: '1',
 	body: {
 		role: 'superAdmin'

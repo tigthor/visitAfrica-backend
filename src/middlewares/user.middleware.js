@@ -39,7 +39,6 @@ export const checkUserCredentials = async (req, res, next) => {
 };
 export const checkUserIfExist = async (req, res, next) => {
 	const user = await UserService.findUserByProperty({ id: req.params.userId });
-
 	if (req.userData.role !== 'superAdmin') {
 		ResponseService.setError(403, 'You can not perform this task');
 		return ResponseService.send(res);
@@ -49,12 +48,10 @@ export const checkUserIfExist = async (req, res, next) => {
 		ResponseService.setError(404, 'We can not find user in the system');
 		return ResponseService.send(res);
 	}
-
 	if (user.role === 'superAdmin') {
 		ResponseService.setError(400, ' super admin role cant be change');
 		return ResponseService.send(res);
 	}
-
 	next();
 };
 
