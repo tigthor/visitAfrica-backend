@@ -43,6 +43,7 @@ const oauthTest = () => {
 				.get('/api/auth/google')
 				.end((err, res) => {
 					res.body.should.be.an('object');
+					res.status.should.be.equal(200);
 				});
 			done();
 		});
@@ -95,8 +96,7 @@ const oauthTest = () => {
 				.get('/api/auth/facebook')
 				.end((err, res) => {
 					res.body.should.be.an('object');
-					res.status.should.be.equal(302);
-					res.body.should.have.property('message');
+					res.status.should.be.equal(200);
 				});
 			done();
 		});
@@ -107,10 +107,10 @@ const oauthTest = () => {
 				.end((err, res) => {
 					res.body.should.be.an('object');
 					res.status.should.be.equal(200);
-					res.body.should.have.property('message');
 				});
 			done();
 		});
 	});
 };
+
 export default oauthTest;

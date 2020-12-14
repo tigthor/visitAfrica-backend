@@ -1,33 +1,15 @@
 /* eslint-disable no-unused-vars */
 module.exports = {
 	up: async (queryInterface, Sequelize) => {
-		await queryInterface.createTable('trips', {
+		await queryInterface.createTable('locations', {
 			id: {
 				allowNull: false,
 				autoIncrement: true,
 				primaryKey: true,
 				type: Sequelize.INTEGER
 			},
-			departureFrom: {
+			location: {
 				type: Sequelize.STRING
-			},
-			departureTo: {
-				type: Sequelize.STRING
-			},
-			startingDate: {
-				type: Sequelize.DATE
-			},
-			returningDate: {
-				type: Sequelize.DATE
-			},
-			reason: {
-				type: Sequelize.STRING
-			},
-			status: {
-				type: Sequelize.STRING
-			},
-			userId: {
-				type: Sequelize.INTEGER,
 			},
 			createdAt: {
 				allowNull: false,
@@ -40,6 +22,6 @@ module.exports = {
 		});
 	},
 	down: async (queryInterface, Sequelize) => {
-		await queryInterface.dropTable('trips');
+		await queryInterface.dropTable('locations');
 	}
 };

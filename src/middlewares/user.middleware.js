@@ -96,3 +96,7 @@ export const facebookAuth = async (accessToken, refreshToken, profile, done) => 
 	}
 	done(null, newUser);
 };
+
+export const verifyIfAssigned = async (req,res,next) => {
+	const user = wait UserService.findUserByAttribute({ id: req.userData.id })
+}

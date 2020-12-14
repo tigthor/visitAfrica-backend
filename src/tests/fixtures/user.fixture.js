@@ -1,6 +1,5 @@
 import TokenService from '../../services/token.service';
 import UserService from '../../services/user.service';
-import BcryptService from '../../services/bcrypt.service';
 
 export const userToUpdateRole = {
 	fullname: 'Alan Shearer',
@@ -15,7 +14,7 @@ export const userToUpdateRole = {
 export const userToVerify = {
 	fullname: 'Alan Shearer',
 	email: 'tigthor1337@gmail.com',
-	password: BcryptService.hashPassword('InWebThereisaserverticktockkk1!!21'),
+	password: 'InWebThereisaserverticktockkk1!!21',
 	birthdate: '2020-01-01',
 	gender: 'male',
 	tel: '0789000000',
@@ -70,6 +69,171 @@ export const newUser = {
 	tel: '0789000000',
 	country: 'kenya',
 	city: 'mombasa',
+};
+
+export const multiCity = {
+	departureFrom: '1',
+	departureTo: '2',
+	startingDate: '2020-12-25',
+	returningDate: '2020-12-30',
+	multiCity: [
+		{
+			name: 'Hawai',
+			startingDate: '2020-12-26',
+			returningDate: '2020-12-30'
+		},
+		{
+			name: 'Budapest',
+			startingDate: '2020-12-26',
+			returningDate: '2020-12-30'
+		},
+		{
+			name: 'Budapest',
+			startingDate: '2020-12-26',
+			returningDate: '2020-12-30'
+		}
+	],
+	reason: 'travel'
+};
+
+export const multiCityFalseId = {
+	departureFrom: '1000',
+	departureTo: '20000',
+	startingDate: '2020-12-25',
+	returningDate: '2020-12-30',
+	multiCity: [
+		{
+			name: 'Hawai',
+			startingDate: '2020-12-26',
+			returningDate: '2020-12-30'
+		},
+		{
+			name: 'Budapest',
+			startingDate: '2020-12-26',
+			returningDate: '2020-12-30'
+		},
+		{
+			name: 'Budapest',
+			startingDate: '2020-12-26',
+			returningDate: '2020-12-30'
+		}
+	],
+	reason: 'travel'
+};
+
+export const wrongMultiCityArray = {
+	departureFrom: '1',
+	departureTo: '2',
+	startingDate: '2020-12-25',
+	returningDate: '2020-12-30',
+	multiCity: [
+		{
+			name: 'Budapest',
+			startingDate: '2020-12-26',
+			returningDate: '2020-12-30'
+		}
+	],
+	reason: 'travel'
+};
+
+export const wrongMultiCityLocation = {
+	departureFrom: '1',
+	departureTo: '1',
+	startingDate: '2020-12-20',
+	returningDate: '2020-12-30',
+	multiCity: [
+		{
+			name: 'Budapest',
+			startingDate: '2020-12-22',
+			returningDate: '2020-12-30'
+		},
+		{
+			name: 'Budapest',
+			startingDate: '2020-12-22',
+			returningDate: '2020-12-30'
+		},
+		{
+			name: 'Budapest',
+			startingDate: '2020-12-22',
+			returningDate: '2020-12-30'
+		}
+	],
+	reason: 'travel'
+};
+
+export const wrongMultiCityLocationSecond = {
+	departureFrom: '5',
+	departureTo: '5',
+	startingDate: '2020-12-20',
+	returningDate: '2020-12-30',
+	multiCity: [
+		{
+			name: 'Budapest',
+			startingDate: '2020-12-22',
+			returningDate: '2020-12-30'
+		},
+		{
+			name: 'Budapest',
+			startingDate: '2020-12-22',
+			returningDate: '2020-12-30'
+		},
+		{
+			name: 'Budapest',
+			startingDate: '2020-12-22',
+			returningDate: '2020-12-30'
+		}
+	],
+	reason: 'travel'
+};
+
+export const wrongMultiCityDate = {
+	departureFrom: '1',
+	departureTo: '2',
+	startingDate: '2020-12-30',
+	returningDate: '2020-12-30',
+	multiCity: [
+		{
+			name: 'Budapest',
+			startingDate: '2020-12-20',
+			returningDate: '2020-12-30'
+		},
+		{
+			name: 'Budapest',
+			startingDate: '2020-12-20',
+			returningDate: '2020-12-30'
+		},
+		{
+			name: 'Budapest',
+			startingDate: '2020-12-20',
+			returningDate: '2020-12-30'
+		}
+	],
+	reason: 'travel'
+};
+
+export const wrongMultiCity = {
+	departureFrom: 'Romania',
+	departureTo: 'Budapest',
+	startingDate: '2020-12-20',
+	returningDate: '2020-12-30',
+	multiCity: [
+		{
+			name: 'Budapest',
+			startingDate: '2020-12-20',
+			returningDate: '2020-12-00'
+		},
+		{
+			name: 'Budapest',
+			startingDate: '2020-12-20',
+			returningDate: '2020-12-30'
+		},
+		{
+			name: 'Budapest',
+			startingDate: '2020-12-20',
+			returningDate: '2020-12-30'
+		}
+	],
+	reason: 'travel'
 };
 
 export const token = TokenService.generateToken({
@@ -199,8 +363,8 @@ export const passwordMatch = {
 	confirmPassword: 'Lulu@123'
 };
 export const passwordDonotMatch = {
-	password: 'Lulu@123',
-	confirmPassword: 'Luli@123'
+	password: 'Lulu@1237',
+	confirmPassword: 'Lulu@123556'
 };
 export const validate = {
 	password: 'ggggggg',
