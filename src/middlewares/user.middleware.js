@@ -3,6 +3,7 @@
 import ResponseService from '../services/response.service';
 import UserService from '../services/user.service';
 import BcryptService from '../services/bcrypt.service';
+import TokenService from '../services/token.service';
 
 /**
      * @param {object} req

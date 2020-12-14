@@ -32,3 +32,27 @@ export const checkLocation = async (req, res, next) => {
 	}
 	next();
 };
+
+export const validateTrip = async (req, res, next) => {
+	const trip = await TripService.findTripByAttribute({ id: req.params.id });
+	if (!trip) {
+		ResponseService.setError(404, 'The trip can not be found');
+		return ResponseService.send(res);
+	}
+	if (req.userData.role !== 'Requester') {
+		ResponseService.setError(403, 'You can not perform this task');
+		return ResponseService.send(res);
+	}
+
+	if (trip.status !== 'Open') {
+		ResponseService.setError(403, 'The trip request have sent sorry you can not edit');
+		return ResponseService.send(res);
+	}
+
+	if (req.userData.id !== trip.userId) {
+		ResponseService.setError(400, 'Oooops you can not edit the trip you have not created');
+		return ResponseService.send(res);
+	}
+
+	next();
+};

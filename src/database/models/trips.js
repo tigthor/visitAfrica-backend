@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
 	const trips = sequelize.define('trips', {
-		departureFrom: DataTypes.INTEGER,
-		departureTo: DataTypes.INTEGER,
+		departureFrom: DataTypes.STRING,
+		departureTo: DataTypes.STRING,
 		startingDate: DataTypes.DATE,
 		returningDate: DataTypes.DATE,
 		userId: DataTypes.INTEGER,

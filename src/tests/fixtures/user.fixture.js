@@ -33,15 +33,11 @@ export const userValidate = {
 };
 
 export const superAdmin = {
-	fullname: 'LouangeMu',
-	email: 'loua@gmail.com',
-	password: '$2b$10$YaouW1yQ1dwhk.OU0TdN0eoIjwcaaq03XzFL.oZnaiVVHFFpdSom.',
-	gender: 'female',
-	birthdate: '2002-10-10',
-	tel: '078474622',
-	country: 'Rwanda',
-	city: 'kigali',
-	profilePicture: '078474622',
+	id: 1,
+	fullname: 'Hyacinthe Mutoni',
+	email: 'hyacinthe@daviscollege.com',
+	password: 'InWebThereisaserverticktockkk1!!21',
+	birthdate: '2020-01-01',
 	role: 'superAdmin',
 	isVerified: true,
 	createdAt: new Date(),
@@ -250,6 +246,31 @@ export const token = TokenService.generateToken({
 	createdAt: newUser.createdAt,
 	updatedAt: newUser.updatedAt,
 });
+export const requesterToken = TokenService.generateToken({
+	id: 1,
+	fullname: 'LouangeMu',
+	email: 'loua@gmail.com',
+	gender: 'female',
+	birthdate: '2002-10-10',
+	tel: '078474622',
+	country: 'Rwanda',
+	city: 'kigali',
+	profilePicture: '078474622',
+	role: 'Requester',
+	isVerified: true });
+
+export const requesterMockToken = TokenService.generateToken({
+	id: 2,
+	fullname: 'LouangeMu',
+	email: 'loua@gmail.com',
+	gender: 'female',
+	birthdate: '2002-10-10',
+	tel: '078474622',
+	country: 'Rwanda',
+	city: 'kigali',
+	profilePicture: '078474622',
+	role: 'Requester',
+	isVerified: true });
 
 export const tokenToVerify = TokenService.generateToken({ email: userToVerify.email });
 export const facebookFakeUser = {
@@ -315,20 +336,6 @@ export const fakeUser = (req, res, next) => {
 	next();
 };
 export const superAdminToken = TokenService.generateToken(superAdmin);
-
-export const requesterToken = TokenService.generateToken({
-	fullname: 'LouangeMu',
-	email: 'loua@gmail.com',
-	password: '$2b$10$YaouW1yQ1dwhk.OU0TdN0eoIjwcaaq03XzFL.oZnaiVVHFFpdSom.',
-	gender: 'female',
-	birthdate: '2002-10-10',
-	tel: '078474622',
-	country: 'Rwanda',
-	city: 'kigali',
-	profilePicture: '078474622',
-	role: 'Requester',
-	isVerified: true,
-});
 
 export const fakeToken = 'eyJhbGciOiJIUzI1NiIsInRcCI6IkpXVCJ9.eyJpZCI6NTEsImZ1bGxuYW1lIjoiTG91YW5nZSBNdWhhd2UiLCJlbWFpbCI6IkxtdWhhd2VuQGdtYWlsLmNvbSIsImJpcnRoZGF0ZSI6IjE5OTAtMDEtMDEiLCJnZW5kZXIiOiJmZW1hbGUiLCJ0ZWwiOiIwNzAwMDAwMDAwIiwiY291bnRyeSI6InppbWJhYndlIiwiY2l0eSI6IktpZ2FsaSIsInByb2ZpbGVQaWN0dXJlIjoiYXZhdGFyLmpwZyIsInJvbGUiOiJSZXF1ZXN0ZXIiLCJjcmVhdGVkQXQiOiIyMDIwLTEyLTA1VDEyOjU3OjI2Ljg0OVoiLCJ1cGRhdGVkQXQiOiIyMDIwLTEyLTA1VDEyOjU3OjI2Ljg0OVoiLCJpYXQiOjE2MDcxNzMwNDcsImV4cCI6MTYwNzI0NTA0N30.FrK9rssbqZEgvcEuRlMyfAWt9ThurBQ1FmLfOBO9YsU';
 

@@ -1,10 +1,22 @@
 import ResponseService from '../services/response.service';
 import TripService from '../services/trip.service';
+import protectRoute from '../middlewares/trip.middleware';
 
 /**
- * This is the authentication class
+ * thuuu
  */
-class TripController {
+class TripContoller {
+	/**
+     * @param {object} req
+     * @param {object} res
+     * @returns {object} get a specific user from the database
+     */
+	static async getSpecificTrip(req, res) {
+		const trip = await TripService.findTripByAttribute({ id: req.params.id });
+		ResponseService.setSuccess(200, 'Trip retrieved successfully!', trip);
+		return ResponseService.send(res);
+	}
+
 	/**
 	 * @param {object} req
 	 * @param {object} res
@@ -15,6 +27,24 @@ class TripController {
 		const newTripRequest = { ...tripRequest, userId: req.userData.id, status: 'pending' };
 		const trip = await TripService.createTrip(newTripRequest);
 		ResponseService.setSuccess(201, 'Trip returned successfully', trip);
+		return ResponseService.send(res);
+	}
+
+	/**
+     *
+     * @param {object} req
+     * @param {object} res
+     * @returns {object} uf
+     */
+	static async updateInfoTrip(req, res) {
+		await TripService.updateTripByAttribute({ id: req.params.id }, {
+			departureFrom: req.body.departureFrom,
+			departureTo: req.body.departureTo,
+			startingDate: req.body.startingDate,
+			returningDate: req.body.returningDate,
+			reason: req.body.reason,
+		});
+		ResponseService.setSuccess(200, 'Trip info updated successfully');
 		return ResponseService.send(res);
 	}
 
