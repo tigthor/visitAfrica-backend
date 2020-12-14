@@ -7,12 +7,12 @@ const { location } = models;
  */
 class LocationService {
 	/**
- * @param {object} attribute
- * @returns {object} deals with location
- */
+   * @param {object} attribute
+   * @returns {object} deals with location
+   */
 	static findLocationsByAttribute(attribute) {
 		return location.findAll({
-			where: { ...attribute }
+			where: { ...attribute },
 		});
 	}
 }

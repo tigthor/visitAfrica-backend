@@ -5,8 +5,7 @@ module.exports = (sequelize, DataTypes) => {
 	/**
    * This is the class for dealng with database models
    */
-	class User extends Model {
-	}
+	class User extends Model {}
 	User.init(
 		{
 			fullname: DataTypes.STRING,
@@ -25,12 +24,12 @@ module.exports = (sequelize, DataTypes) => {
 		{
 			sequelize,
 			modelName: 'User',
-		},
+		}
 	);
 	User.associate = (models) => {
 		User.hasMany(models.User, {
 			foreignKey: 'line_manager_id',
-			onDelete: 'CASCADE'
+			onDelete: 'CASCADE',
 		});
 	};
 	return User;

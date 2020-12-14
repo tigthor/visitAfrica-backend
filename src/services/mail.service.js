@@ -6,19 +6,18 @@ import sgMail from '@sendgrid/mail';
  */
 class MailService {
 	/**
-	 * @param {string} name
-	 * @param {string} email
-	 * @param {object} token
-	 * @return {object} this is going to send an email containing a token to verify
-	 */
+   * @param {string} name
+   * @param {string} email
+   * @param {object} token
+   * @return {object} this is going to send an email containing a token to verify
+   */
 	static sendMail(name, email, token) {
 		const emailToSend = {
 			body: {
 				name,
 				intro: 'you registered an account on Visit africa.',
 				action: {
-					instructions:
-			'Please click the button below to verify your account',
+					instructions: 'Please click the button below to verify your account',
 					button: {
 						color: '#33b5e5',
 						text: 'Verify account',
@@ -44,24 +43,22 @@ class MailService {
 			html: emailTemplate,
 		};
 		sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-		sgMail
-			.send(msg);
+		sgMail.send(msg);
 	}
 
 	/**
-	 * @param {object} name
-	 * @param {object} email
-	 * @param {object} token
-	 * @returns {object} send an email to a user via email
-	*/
+   * @param {object} name
+   * @param {object} email
+   * @param {object} token
+   * @returns {object} send an email to a user via email
+   */
 	static sendEMail(name, email, token) {
 		const emailToSend = {
 			body: {
 				name,
 				intro: 'You requested to reset your password.',
 				action: {
-					instructions:
-			'Please click the button below to reset your password',
+					instructions: 'Please click the button below to reset your password',
 					button: {
 						color: '#33b5e5',
 						text: 'Reset your password',
@@ -87,8 +84,7 @@ class MailService {
 			html: emailTemplate,
 		};
 		sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-		sgMail
-			.send(msg);
+		sgMail.send(msg);
 	}
 }
 
