@@ -86,22 +86,22 @@ export const token = TokenService.generateToken({
 
 export const tokenToVerify = TokenService.generateToken({ email: userToVerify.email });
 export const facebookFakeUser = {
-	id: '1199970126416027',
+	id: '1199970126416029',
 	name: {
 		familyName: 'liliane',
 		givenName: 'nishimwe',
 		middleName: 'nishl',
 	},
-	emails: [{ value: 'lnishimwe120@daviscollege.com' }],
+	emails: [{ value: 'lilianenishi@daviscollege.com' }],
 	provider: 'facebook',
 	_raw:
-    '{"email":"lnishimwe120@daviscollege.com","last_name":"liliane","first_name":"nishimwe","middle_name":"nishi","id":"1199970126416027"}',
+    '{"email":"lilianenishi@daviscollege.com","last_name":"liliane","first_name":"nishimwe","middle_name":"nishi","id":"1199970126416027"}',
 	_json: {
-		email: 'lnishimwe120@daviscollege.com',
+		email: 'lilianenishi@daviscollege.com',
 		last_name: 'liliane',
 		first_name: 'nishimwe',
 		middle_name: 'nishi',
-		id: '1199970126416027',
+		id: '1199970126416029',
 	},
 };
 
