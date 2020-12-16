@@ -93,6 +93,54 @@ class AuthController {
 		ResponseService.setSuccess(200, 'you have successful logged in', token);
 		return ResponseService.send(res);
 	}
+
+	/**
+ * @param {object} req
+ * @param {object} res
+ * @returns {object} resetting the password
+*/
+	static async resetPassword(req, res) {
+		const decodedToken = await TokenService.verifyToken(req.query.token);
+		await UserService.updateUserByAttribute({ email: decodedToken.email }, {
+			password: BcryptService.hashPassword(req.body.password),
+			confirmPassword: BcryptService.hashPassword(req.body.confirmPassword)
+		});
+		if (req.body.password !== req.body.confirmPassword) {
+			ResponseService.setError(400, 'Password does not match!');
+			return ResponseService.send(res);
+		}
+		ResponseService.setSuccess(200, 'Password changed successfully');
+		return ResponseService.send(res);
+	}
+
+	/**
+	 * @param {object} req
+	 * @param {object} res
+	 * @returns {object} helping the user to reset the password
+	*/
+	static async forgetPassword(req, res) {
+		const decodedToken = await TokenService.verifyToken(req.query.token);
+		UserService.updateUserByAttribute({ email: decodedToken.email }, { isVerified: true });
+		ResponseService.setSuccess(200, 'Type http://localhost:3000/api/auth/resetpassword in the postman to change the password');
+		return ResponseService.send(res);
+	}
+
+	/**
+ * @param {object} req
+ * @param {object} res
+ * @returns {object} sends the link to the email that helps the user to reset the password
+*/
+	static async sendResetPasswordLink(req, res) {
+		const result = await UserService.findUserByAttribute({ email: req.body.email });
+		if (result !== null) {
+			const token = TokenService.generateToken({ email: req.body.email });
+			MailService.sendEMail(result.dataValues.fullname, result.dataValues.email, token);
+			ResponseService.setSuccess(200, 'Email sent, please check your email to reset your password', token);
+			return ResponseService.send(res);
+		}
+		ResponseService.setError(404, 'user not found!');
+		return ResponseService.send(res);
+	}
 }
 
 export default AuthController;

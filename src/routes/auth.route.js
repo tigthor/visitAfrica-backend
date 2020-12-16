@@ -1,10 +1,11 @@
-/* eslint-disable import/named */
+/* eslint-disable import/no-named-as-default-member */
 import { Router } from 'express';
 import passport from 'passport';
 import AuthController from '../controllers/auth.controller';
+import protectroute from '../middlewares/protect-route.middleware';
 import { fakeUser } from '../tests/fixtures/user.fixture';
 import { checkIfEmailExist, checkUserCredentials, googleAuth, facebookAuth } from '../middlewares/user.middleware';
-import { validateSignup, validateLoginBody } from '../validations/user.validation';
+import { validateSignup, validateLoginBody, resetPassword, sendResetPasswordLink } from '../validations/user.validation';
 import '../config/passport.config';
 
 const router = Router();
@@ -22,6 +23,7 @@ router.post(
 	AuthController.login,
 );
 router.get('/activate', AuthController.verifyUser);
+router.get('/resetpassword', AuthController.forgetPassword);
 
 router.get(
 	'/google', googleAuth,
@@ -46,5 +48,7 @@ router.get(
 	}),
 	AuthController.loginWithSocialMedia
 );
+router.patch('/resetpassword', protectroute, resetPassword, AuthController.resetPassword);
+router.post('/forgetpassword', protectroute, sendResetPasswordLink, AuthController.sendResetPasswordLink);
 
 export default router;

@@ -55,12 +55,12 @@ const oauthTest = () => {
 				.end((err, res) => {
 					res.body.should.be.an('object');
 					res.status.should.be.equal(200);
-					res.body.should.have.property('message');
 				});
 			done();
 		});
 	});
-	describe('/GET Facebook login', () => {
+
+	describe('Test Facebook login', () => {
 		before(() => {
 			const profile = facebookFakeUser;
 			let accessToken;
@@ -68,8 +68,6 @@ const oauthTest = () => {
 			let done;
 			facebookAuth(accessToken, refreshToken, profile, done);
 		});
-	});
-	describe('Test Facebook login', () => {
 		it('should return 201 if a new user', (done) => {
 			chai
 				.request(app)

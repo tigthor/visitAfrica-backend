@@ -22,7 +22,7 @@ export const userToVerify = {
 	country: 'kenya',
 	city: 'mombasa',
 };
-
+export const verifyPassword = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkJNdWd3YW5lemE3MjBAZGF2aXNjb2xsZWdlLmNvbSIsImlhdCI6MTYwODEyNjQ2MywiZXhwIjoxNjA4MTk4NDYzfQ.4AgjkwRY1Y0Ju5T8dLgYdKs7upf8vXZ80s5tWkQiIzc';
 export const userValidate = {
 	fullname: 'Alan Shearer',
 	password: 'InWebThereisaserverticktockkk1!!21',
@@ -162,3 +162,29 @@ export const userRoleData = {
 export const createUser = async () => {
 	await UserService.createUser(newUser);
 };
+
+export const forgetPassword = {
+	email: 'BMugwaneza720@daviscollege.com'
+};
+
+export const userToForgetPassword = {
+	email: 'tigthor1337@gmail.com'
+};
+export const passwordMatch = {
+	password: 'Lulu@123',
+	confirmPassword: 'Lulu@123'
+};
+export const passwordDonotMatch = {
+	password: 'Lulu@123',
+	confirmPassword: 'Luli@123'
+};
+export const validate = {
+	password: 'ggggggg',
+	confirmPassword: 'ghshsnnn'
+};
+export const validateUserRoleBody = {
+	userId: 'hhh',
+	role: ' '
+};
+
+export const forgotPasswordToken = TokenService.generateToken(forgetPassword);

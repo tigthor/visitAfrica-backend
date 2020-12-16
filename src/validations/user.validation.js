@@ -172,3 +172,48 @@ export const validateLoginBody = (req, res, next) => {
 	}
 	next();
 };
+export const resetPassword = (req, res, next) => {
+	const schema = Joi.object({
+		password: Joi.string()
+			.regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/)
+			.required()
+			.messages({
+				'string.pattern.base': 'password should contain uppercase,lowercase,specialCharacter,and number',
+				'any.required': 'password is required',
+				'string.empty': 'password is not allowed to be empty'
+
+			}),
+		confirmPassword: Joi.string()
+			.regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/)
+			.required()
+			.messages({
+				'string.pattern.base': 'password should contain uppercase,lowercase,specialCharacter,and number',
+				'any.required': 'confirm password is required',
+				'string.empty': 'password is not allowed to be empty'
+
+			}),
+	}).options({ abortEarly: false });
+	const { error } = schema.validate(req.body);
+	if (error) {
+		const errors = error.details.map(err => err.message);
+		ResponseService.setError(400, errors);
+		return ResponseService.send(res);
+	}
+	next();
+};
+export const sendResetPasswordLink = (req, res, next) => {
+	const schema = Joi.object({
+		email: Joi.string().email().required().messages({
+			'any.required': 'Email is required',
+			'string.email': 'Email must be a valid email',
+			'string.empty': 'Email must not be empty'
+		}),
+	}).options({ abortEarly: false });
+	const { error } = schema.validate(req.body);
+	if (error) {
+		const errors = error.details.map(err => err.message);
+		ResponseService.setError(400, errors);
+		return ResponseService.send(res);
+	}
+	next();
+};
