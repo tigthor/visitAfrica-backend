@@ -1,4 +1,5 @@
 import models from '../database/models';
+import trips from '../database/models/trips';
 
 const { Request } = models;
 
@@ -15,6 +16,18 @@ class RequestService {
 		   */
 	static createRequest(newRequest) {
 		return Request.create(newRequest);
+	}
+
+	/**
+   * Gets all request .
+   * @param {object} param condition
+   * @returns {object} The requests object.
+   */
+	static async getAllRequets(param) {
+		return Request.findAll({
+			where: param,
+			order: [['status', 'ASC'], ['createdAt', 'DESC']]
+		});
 	}
 }
 

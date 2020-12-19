@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable no-unused-vars */
 /**
  *
@@ -14,16 +15,25 @@ export async function up(queryInterface, Sequelize) {
 			type: Sequelize.INTEGER
 		},
 		requesterId: {
-			type: Sequelize.INTEGER
+			type: Sequelize.INTEGER,
+			references: {
+				model: 'Users',
+				key: 'id'
+			  },
+			  onDelete: 'CASCADE',
+			  onUpdate: 'CASCADE'
 		},
 		tripId: {
-			type: Sequelize.INTEGER
+			type: Sequelize.INTEGER,
+			references: {
+				model: 'Users',
+				key: 'id'
+			  },
+			  onDelete: 'CASCADE',
+			  onUpdate: 'CASCADE'
 		},
 		status: {
 			type: Sequelize.STRING
-		},
-		lineManagerId: {
-			type: Sequelize.INTEGER
 		},
 		createdAt: {
 			allowNull: false,

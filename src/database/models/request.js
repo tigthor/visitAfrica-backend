@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import { Model } from 'sequelize';
 
 module.exports = (sequelize, DataTypes) => {
@@ -10,7 +11,6 @@ module.exports = (sequelize, DataTypes) => {
 		requesterId: DataTypes.INTEGER,
 		tripId: DataTypes.INTEGER,
 		status: DataTypes.STRING,
-		lineManagerId: DataTypes.INTEGER
 	}, {
 		sequelize,
 		modelName: 'Request',

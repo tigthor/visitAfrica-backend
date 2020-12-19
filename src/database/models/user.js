@@ -18,7 +18,6 @@ module.exports = (sequelize, DataTypes) => {
 			country: DataTypes.STRING,
 			city: DataTypes.STRING,
 			profilePicture: DataTypes.STRING,
-			lineManagerId: DataTypes.INTEGER,
 			role: DataTypes.STRING,
 			line_manager_id: DataTypes.INTEGER,
 			isVerified: DataTypes.BOOLEAN,
