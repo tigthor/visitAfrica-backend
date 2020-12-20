@@ -6,14 +6,12 @@ import { userRoleData, userToUpdateRole, superAdmin, createUser, superAdminToken
 
 chai.should();
 chai.use(chaiHttp);
-
 const userRoleTest = () => {
 	describe('change users roles', () => {
 		before(async () => {
 			createUser(userToUpdateRole);
 			createUser(superAdmin);
 		});
-
 		it('Should update a user', (done) => {
 			chai.request(app)
 				.patch('/api/users/role/1')
@@ -62,7 +60,18 @@ const userRoleTest = () => {
 				});
 			done();
 		});
-
+		it('You can not perform this task', (done) => {
+			chai.request(app)
+				.patch('/api/users/role/1')
+				.set('Authorization', `bearer ${token}`)
+				.send(userRoleData.body)
+				.end((err, res) => {
+					res.body.should.be.an('object');
+					res.status.should.be.equal(403);
+					res.body.should.have.property('message');
+				});
+			done();
+		});
 		it('You can not perform this task', (done) => {
 			chai.request(app)
 				.patch('/api/users/role/1')
@@ -77,5 +86,4 @@ const userRoleTest = () => {
 		});
 	});
 };
-
 export default userRoleTest;

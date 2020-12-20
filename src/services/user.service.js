@@ -52,6 +52,17 @@ class UserService {
 	}
 
 	/**
+   * @param {integer} managerId id of the manager to be finding
+   * @returns {object} data of the manager found
+	*/
+	static async assignUserManager(managerId) {
+		const managerData = await models.assignUserManager(db.user, managerId);
+
+		if (!managerData) return false;
+		return true;
+	}
+
+	/**
 	 *
 	 * @param {object} property
 	 * @returns {object} this return a given user based by property

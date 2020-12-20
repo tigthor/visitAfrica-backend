@@ -6,6 +6,7 @@ import loginTest from './auth/login.test';
 import userRoleTest from './users/user-role.test';
 import getUserTest from './users/get-users.test';
 import updateUserProfileTest from './users/update-user.test';
+import manageUserTest from './users/manage-user.test';
 
 appTest();
 signUpTest();
@@ -15,3 +16,4 @@ oauthTest();
 userRoleTest();
 getUserTest();
 updateUserProfileTest();
+manageUserTest();
