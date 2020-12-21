@@ -7,6 +7,7 @@ import userRoleTest from './users/user-role.test';
 import getUserTest from './users/get-users.test';
 import updateUserProfileTest from './users/update-user.test';
 import manageUserTest from './users/manage-user.test';
+import resetPassword from './auth/resetpassword.test';
 
 appTest();
 signUpTest();
@@ -17,3 +18,4 @@ userRoleTest();
 getUserTest();
 updateUserProfileTest();
 manageUserTest();
+resetPassword();

@@ -2,7 +2,7 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../../server';
-import { userRoleData, userToUpdateRole, superAdmin, createUser, superAdminToken, token } from '../fixtures/user.fixture';
+import { userRoleData, userToUpdateRole, superAdmin, createUser, superAdminToken, token, validateUserRoleBody } from '../fixtures/user.fixture';
 
 chai.should();
 chai.use(chaiHttp);
@@ -80,6 +80,18 @@ const userRoleTest = () => {
 				.end((err, res) => {
 					res.body.should.be.an('object');
 					res.status.should.be.equal(403);
+					res.body.should.have.property('message');
+				});
+			done();
+		});
+		it('should check if the user input is incorrect', (done) => {
+			chai.request(app)
+				.patch('/api/users/role/1')
+				.set('Authorization', `bearer ${token}`)
+				.send(validateUserRoleBody)
+				.end((err, res) => {
+					res.body.should.be.an('object');
+					res.status.should.be.equal(402);
 					res.body.should.have.property('message');
 				});
 			done();

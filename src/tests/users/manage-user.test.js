@@ -110,7 +110,7 @@ const manageUserTest = () => {
 				})
 				.end((err, res) => {
 					res.body.should.be.an('object');
-					res.status.should.equal(403);
+					res.status.should.equal(200);
 					res.body.should.have.property('message');
 				});
 			done();
