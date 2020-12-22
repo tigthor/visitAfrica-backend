@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 module.exports = {
 	up: async (queryInterface, Sequelize) => {
 		await queryInterface.createTable('trips', {
@@ -27,12 +28,12 @@ module.exports = {
 			},
 			userId: {
 				type: Sequelize.INTEGER,
+				onDelete: 'CASCADE',
+				onUpdate: 'CASCADE',
 				references: {
 					model: 'Users',
 					key: 'id'
 				},
-				onDelete: 'CASCADE',
-				onUpdate: 'CASCADE'
 			},
 			createdAt: {
 				allowNull: false,

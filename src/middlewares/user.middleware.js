@@ -96,3 +96,12 @@ export const facebookAuth = async (accessToken, refreshToken, profile, done) => 
 	}
 	done(null, newUser);
 };
+
+export const verifyIfAssigned = async (req, res, next) => {
+	const user = await UserService.findUserByAttribute({ id: req.userData.id });
+	if (user.dataValues.line_manager_id === null) {
+		ResponseService.setError(400, 'User is not assigned to line manager');
+		return ResponseService.send(res);
+	}
+	next();
+};

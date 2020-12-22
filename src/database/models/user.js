@@ -6,16 +6,6 @@ module.exports = (sequelize, DataTypes) => {
    * This is the class for dealng with database models
    */
 	class User extends Model {
-		/**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * @param {object} models
-     * @returns {object} this deals with sequelize models
-     * The `models/index` file will call this method automatically.
-     */
-		static associate(models) {
-			// define association here
-		}
 	}
 	User.init(
 		{
@@ -37,5 +27,11 @@ module.exports = (sequelize, DataTypes) => {
 			modelName: 'User',
 		},
 	);
+	User.associate = (models) => {
+		User.hasMany(models.User, {
+			foreignKey: 'line_manager_id',
+			onDelete: 'CASCADE'
+		});
+	};
 	return User;
 };

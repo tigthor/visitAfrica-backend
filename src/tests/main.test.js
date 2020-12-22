@@ -8,6 +8,7 @@ import getUserTest from './users/get-users.test';
 import updateUserProfileTest from './users/update-user.test';
 import manageUserTest from './users/manage-user.test';
 import resetPassword from './auth/resetpassword.test';
+import multiCityTest from './trip/multi-city.test';
 
 appTest();
 signUpTest();
@@ -19,3 +20,4 @@ getUserTest();
 updateUserProfileTest();
 manageUserTest();
 resetPassword();
+multiCityTest();
