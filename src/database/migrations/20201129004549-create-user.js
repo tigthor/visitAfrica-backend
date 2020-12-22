@@ -4,7 +4,7 @@
  * @param {object} Sequelize
  * @returns {object} this is a sequelize migration for users
  */
- export async function up(queryInterface, Sequelize) {
+export async function up(queryInterface, Sequelize) {
 	await queryInterface.createTable('Users', {
 		id: {
 			allowNull: false,
