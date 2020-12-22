@@ -15,7 +15,7 @@ const userRoleTest = () => {
 		it('Should update a user', (done) => {
 			chai.request(app)
 				.patch('/api/users/role/1')
-				.set('Authorization', `bearer ${superAdminToken}`)
+				.set('Authorization', `Barer ${superAdminToken}`)
 				.send(userRoleData.body)
 				.end((err, res) => {
 					res.body.should.be.an('object');
@@ -27,7 +27,7 @@ const userRoleTest = () => {
 		it('Should not accept a string id', (done) => {
 			chai.request(app)
 				.patch('/api/users/role/hyacinthe')
-				.set('Authorization', `bearer ${superAdminToken}`)
+				.set('Authorization', `Bearer ${superAdminToken}`)
 				.send(userRoleData.body)
 				.end((err, res) => {
 					res.body.should.be.an('object');
@@ -39,7 +39,7 @@ const userRoleTest = () => {
 		it('superAdmin role can not be changed', (done) => {
 			chai.request(app)
 				.patch('/api/users/role/3')
-				.set('Authorization', `bearer ${superAdminToken}`)
+				.set('Authorization', `Bearer ${superAdminToken}`)
 				.send(userRoleData.body)
 				.end((err, res) => {
 					res.body.should.be.an('object');
@@ -51,7 +51,7 @@ const userRoleTest = () => {
 		it('we can not find user', (done) => {
 			chai.request(app)
 				.patch('/api/users/role/50')
-				.set('Authorization', `bearer ${superAdminToken}`)
+				.set('Authorization', `Bearer ${superAdminToken}`)
 				.send(userRoleData.body)
 				.end((err, res) => {
 					res.body.should.be.an('object');
@@ -75,7 +75,7 @@ const userRoleTest = () => {
 		it('You can not perform this task', (done) => {
 			chai.request(app)
 				.patch('/api/users/role/1')
-				.set('Authorization', `bearer ${token}`)
+				.set('Authorization', `Bearer ${token}`)
 				.send(userRoleData.body)
 				.end((err, res) => {
 					res.body.should.be.an('object');

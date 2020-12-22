@@ -392,3 +392,41 @@ export const multiCityToken = TokenService.generateToken({
 });
 
 export const forgotPasswordToken = TokenService.generateToken(forgetPassword);
+export const returnTrip = {
+	departureFrom: 'kakiru',
+	departureTo: 'rubavu',
+	startingDate: '2020-12-30',
+	returningDate: '2021-01-01',
+	reason: 'vvv',
+};
+
+export const wrongReturnTripLocation = {
+	departureFrom: 'kakiru',
+	departureTo: 'kakiru',
+	startingDate: '2020-12-30',
+	returningDate: '2021-01-01',
+	reason: 'vvv',
+};
+
+export const userToken = TokenService.generateToken({
+	id: 1,
+	fullname: 'LouangeMu',
+	email: 'loua@gmail.com',
+	password: '$2b$10$YaouW1yQ1dwhk.OU0TdN0eoIjwcaaq03XzFL.oZnaiVVHFFpdSom.',
+	gender: 'female',
+	birthdate: '2002-10-10',
+	tel: '078474622',
+	country: 'Rwanda',
+	city: 'kigali',
+	profilePicture: '078474622',
+	role: 'Requester',
+	isVerified: true,
+	createdAt: new Date(),
+	updatedAt: new Date(),
+});
+export const wrongReturnTrip = {
+	departureFrom: '',
+	departureTo: 'rubavu',
+	startingDate: '2020-12-30',
+	returningDate: '2021-01-01',
+};

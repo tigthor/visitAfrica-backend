@@ -1,3 +1,4 @@
+/* eslint-disable require-jsdoc */
 import models from '../database/models';
 
 const { trips } = models;
@@ -8,28 +9,12 @@ const { trips } = models;
  * @class TripService
  */
 class TripService {
-	/**
- *
- * @static
- * @param {object} attribute
- * @returns {object} this function finds trip
- */
-	static findTripByAttribute(attribute) {
-		return trips.findOne({
-			where: { ...attribute }
-		});
+	static createTrip(tripRequest) {
+		return trips.create(tripRequest);
 	}
 
-	/**
-       *
-       *
-       * @static
-       * @param {newTrip} newTrip
-       * @returns {newTrip} @memberof TripService
-       */
-	static createTrip(newTrip) {
-		return trips.create(newTrip);
+	static findTripByAttribute(attribute) {
+		return trips.findOne({ where: attribute });
 	}
 }
-
 export default TripService;

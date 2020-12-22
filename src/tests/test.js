@@ -15,8 +15,8 @@ const appTest = () => {
 				.get('/')
 				.end((err, res) => {
 					expect(res.status).to.be.equal(200);
-					done();
 				});
+			done();
 		});
 	});
 };
