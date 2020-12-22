@@ -65,7 +65,6 @@ export async function up(queryInterface, Sequelize) {
 		},
 	});
 }
-
 /**
  * @param {object} queryInterface
  * @param {object} Sequelize

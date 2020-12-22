@@ -23,7 +23,7 @@ const protectRoute = (req, res, next) => {
 		next();
 	} else {
 		ResponseService.setError(
-			403,
+			401,
 			'You can not proceed without setting authorization token',
 		);
 		return ResponseService.send(res);

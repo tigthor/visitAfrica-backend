@@ -41,7 +41,7 @@ const updateUserProfileTest = () => {
 				.patch('/api/users/profile')
 				.end((err, res) => {
 					res.body.should.be.an('object');
-					res.should.have.status(403);
+					res.should.have.status(401);
 					res.body.should.have.property('message');
 				});
 			done();

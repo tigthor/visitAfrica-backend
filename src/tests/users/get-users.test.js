@@ -36,7 +36,7 @@ const getUserTest = () => {
 			chai
 				.request(app)
 				.get('/api/users/profile')
-				.set('Authorization', `Bearer ${expiredToken}`)
+				.set('authorization', `Bearer ${expiredToken}`)
 				.end((err, res) => {
 					res.body.should.be.an('object');
 					res.should.have.status(401);
