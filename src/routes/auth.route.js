@@ -2,17 +2,28 @@
 import { Router } from 'express';
 import passport from 'passport';
 import AuthController from '../controllers/auth.controller';
-import protectroute from '../middlewares/protect-route.middleware';
 import { fakeUser } from '../tests/fixtures/user.fixture';
-import { checkIfEmailExist, checkUserCredentials, googleAuth, facebookAuth } from '../middlewares/user.middleware';
-import { validateSignup, validateLoginBody, resetPassword, sendResetPasswordLink } from '../validations/user.validation';
+import {
+	checkIfEmailExist,
+	checkUserCredentials,
+	googleAuth,
+	facebookAuth,
+} from '../middlewares/user.middleware';
+import {
+	validateSignup,
+	validateLoginBody,
+	resetPassword,
+	sendResetPasswordLink,
+} from '../validations/user.validation';
 import '../config/passport.config';
 
 const router = Router();
 
 router.post(
 	'/signup',
-	validateSignup, checkIfEmailExist, AuthController.signup,
+	validateSignup,
+	checkIfEmailExist,
+	AuthController.signup
 );
 router.patch('/activate', AuthController.verifyUser);
 
@@ -20,13 +31,14 @@ router.post(
 	'/login',
 	validateLoginBody,
 	checkUserCredentials,
-	AuthController.login,
+	AuthController.login
 );
 router.get('/activate', AuthController.verifyUser);
 router.get('/resetpassword', AuthController.forgetPassword);
 
 router.get(
-	'/google', googleAuth,
+	'/google',
+	googleAuth,
 	passport.authenticate('google', { scope: ['email', 'profile'] })
 );
 router.get(
@@ -38,8 +50,18 @@ router.get(
 	AuthController.loginWithSocialMedia
 );
 router.get('/facebook', facebookAuth, passport.authenticate('facebook'));
-router.get('/test/google', fakeUser, facebookAuth, AuthController.loginWithSocialMedia);
-router.get('/test/facebook', fakeUser, googleAuth, AuthController.loginWithSocialMedia);
+router.get(
+	'/test/google',
+	fakeUser,
+	facebookAuth,
+	AuthController.loginWithSocialMedia
+);
+router.get(
+	'/test/facebook',
+	fakeUser,
+	googleAuth,
+	AuthController.loginWithSocialMedia
+);
 router.get(
 	'/facebook/redirect',
 	passport.authenticate('facebook', {
@@ -48,7 +70,15 @@ router.get(
 	}),
 	AuthController.loginWithSocialMedia
 );
-router.patch('/reset-password', protectroute, resetPassword, AuthController.resetPassword);
-router.post('/forget-password', sendResetPasswordLink, AuthController.sendResetPasswordLink);
+router.patch(
+	'/reset-password',
+	resetPassword,
+	AuthController.resetPassword
+);
+router.post(
+	'/forget-password',
+	sendResetPasswordLink,
+	AuthController.sendResetPasswordLink
+);
 
 export default router;

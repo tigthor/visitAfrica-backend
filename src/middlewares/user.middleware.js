@@ -5,11 +5,11 @@ import UserService from '../services/user.service';
 import BcryptService from '../services/bcrypt.service';
 
 /**
-     * @param {object} req
-     * @param {object} res
-   * @param {object} next
-     * @return {object} this is going to verify a user
-     */
+ * @param {object} req
+ * @param {object} res
+ * @param {object} next
+ * @return {object} this is going to verify a user
+ */
 export const checkIfEmailExist = async (req, res, next) => {
 	const user = await UserService.findUserByAttribute({ email: req.body.email });
 	if (user) {
@@ -25,7 +25,9 @@ export const checkUserCredentials = async (req, res, next) => {
 		return ResponseService.send(res);
 	}
 	const userIsVerified = await UserService.findUserByAttribute({
-		email: req.body.email, isVerified: true });
+		email: req.body.email,
+		isVerified: true,
+	});
 	if (!userIsVerified) {
 		ResponseService.setError(401, 'account is not verified');
 		return ResponseService.send(res);
@@ -63,7 +65,9 @@ export const checkUserIfExist = async (req, res, next) => {
  * @returns {object} this function get profile for a google user, and create a user if not exits
  */
 export const googleAuth = async (accessToken, refreshToken, profile, done) => {
-	const user = await UserService.findUserByAttribute({ email: profile._json.email });
+	const user = await UserService.findUserByAttribute({
+		email: profile._json.email,
+	});
 	const newUser = {
 		fullname: profile.displayName,
 		email: profile._json.email,
@@ -82,8 +86,15 @@ export const googleAuth = async (accessToken, refreshToken, profile, done) => {
  * @param  {function} done
  * @returns {object} this function get profile for a facebook user, and create a user if not exits
  */
-export const facebookAuth = async (accessToken, refreshToken, profile, done) => {
-	const user = await UserService.findUserByAttribute({ email: profile._json.email });
+export const facebookAuth = async (
+	accessToken,
+	refreshToken,
+	profile,
+	done
+) => {
+	const user = await UserService.findUserByAttribute({
+		email: profile._json.email,
+	});
 
 	const newUser = {
 		fullname: profile.displayName,

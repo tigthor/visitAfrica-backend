@@ -6,25 +6,25 @@ module.exports = {
 				allowNull: false,
 				autoIncrement: true,
 				primaryKey: true,
-				type: Sequelize.INTEGER
+				type: Sequelize.INTEGER,
 			},
 			departureFrom: {
-				type: Sequelize.STRING
+				type: Sequelize.STRING,
 			},
 			departureTo: {
-				type: Sequelize.STRING
+				type: Sequelize.STRING,
 			},
 			startingDate: {
-				type: Sequelize.DATE
+				type: Sequelize.DATE,
 			},
 			returningDate: {
-				type: Sequelize.DATE
+				type: Sequelize.DATE,
 			},
 			reason: {
-				type: Sequelize.STRING
+				type: Sequelize.STRING,
 			},
 			status: {
-				type: Sequelize.STRING
+				type: Sequelize.STRING,
 			},
 			userId: {
 				type: Sequelize.INTEGER,
@@ -32,20 +32,20 @@ module.exports = {
 				onUpdate: 'CASCADE',
 				references: {
 					model: 'Users',
-					key: 'id'
+					key: 'id',
 				},
 			},
 			createdAt: {
 				allowNull: false,
-				type: Sequelize.DATE
+				type: Sequelize.DATE,
 			},
 			updatedAt: {
 				allowNull: false,
-				type: Sequelize.DATE
-			}
+				type: Sequelize.DATE,
+			},
 		});
 	},
 	down: async (queryInterface, Sequelize) => {
 		await queryInterface.dropTable('trips');
-	}
+	},
 };

@@ -93,8 +93,8 @@ class UserController {
    */
 	static async assignUserToManager(req, res) {
 		await UserService.updateProperty(
-			{ id: req.params.userId },
-			{ lineManager: req.params.managerId }
+			{ id: parseInt(req.params.userId) },
+			{ lineManager: parseInt(req.params.managerId) }
 		);
 		ResponseService.setSuccess(200, 'User assigned to manager successfully');
 		ResponseService.send(res);
