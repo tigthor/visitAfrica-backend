@@ -1,16 +1,58 @@
 import { Router } from 'express';
 import TripController from '../controllers/trip.controller';
 import protectRoute from '../middlewares/protect-route.middleware';
-import { checkIfTripExist, checkLocation } from '../middlewares/trip.middleware';
-import { validateTrip, validateMultiCity } from '../validations/multicity.validation';
+import {
+	validateTrip,
+	validateMultiCity,
+} from '../validations/multicity.validation';
 import { verifyIfAssigned } from '../middlewares/user.middleware';
-import validateReturnTrip from '../validations/trip.validation';
-import TripMiddleware from '../middlewares/trip.middlewares';
+import {
+	checkIfTripExist,
+	checkLocation,
+	validateEditTrip,
+	validateReturnTrip,
+	validateReturnTripBody,
+} from '../middlewares/trip.middleware';
+import {
+	editTripValidation,
+	returnTripValidation,
+} from '../validations/trip.validation';
 
 const router = Router();
 
-router.post('/multi-city', protectRoute, verifyIfAssigned, validateTrip, validateMultiCity, checkLocation, checkIfTripExist, TripController.requestMultiCityTrip);
+router.post(
+	'/multi-city',
+	protectRoute,
+	verifyIfAssigned,
+	validateTrip,
+	validateMultiCity,
+	checkLocation,
+	checkIfTripExist,
+	TripController.requestMultiCityTrip
+);
 
-router.post('/return-trip', protectRoute, validateReturnTrip, TripMiddleware.validateReturnTripBody, TripMiddleware.validateReturnTrip, TripController.returnTripController);
+router.post(
+	'/return-trip',
+	protectRoute,
+	returnTripValidation,
+	validateReturnTripBody,
+	validateReturnTrip,
+	TripController.returnTripController
+);
+
+router.get(
+	'/:id',
+	protectRoute,
+	validateEditTrip,
+	TripController.getSpecificTrip
+);
+router.patch(
+	'/edit/:id',
+	protectRoute,
+	editTripValidation,
+	validateEditTrip,
+	checkLocation,
+	TripController.updateInfoTrip
+);
 
 export default router;

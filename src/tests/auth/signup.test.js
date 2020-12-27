@@ -3,7 +3,11 @@ import chaiHttp from 'chai-http';
 import sinon from 'sinon';
 import sendGrid from '@sendgrid/mail';
 import app from '../../server';
-import { userValidate, userEmailExist, userToVerify } from '../fixtures/user.fixture';
+import {
+	userValidate,
+	userEmailExist,
+	userToVerify,
+} from '../fixtures/user.fixture';
 
 chai.should();
 chai.use(chaiHttp);
@@ -22,7 +26,8 @@ const signUpTest = () => {
 			sinon.restore();
 		});
 		it('Should register a user and send email on success', (done) => {
-			chai.request(app)
+			chai
+				.request(app)
 				.post('/api/auth/signup')
 				.send(userToVerify)
 				.end((err, res) => {
@@ -34,7 +39,8 @@ const signUpTest = () => {
 		});
 
 		it('Should validate user inputs', (done) => {
-			chai.request(app)
+			chai
+				.request(app)
 				.post('/api/auth/signup')
 				.send(userValidate)
 				.end((err, res) => {
@@ -45,15 +51,16 @@ const signUpTest = () => {
 				});
 		});
 		it('Should check if email exists', (done) => {
-			chai.request(app)
+			chai
+				.request(app)
 				.post('/api/auth/signup')
 				.send(userEmailExist)
 				.end((err, res) => {
 					res.body.should.be.an('object');
 					res.status.should.be.equal(409);
 					res.body.should.have.property('message');
-					done();
 				});
+			done();
 		});
 	});
 };

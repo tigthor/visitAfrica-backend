@@ -17,7 +17,10 @@ export const checkUser = async (req, res, next) => {
 	}
 	const user = await UserService.findUserByAttribute({ id: userId });
 	if (!user) {
-		ResponseService.setError(404, 'The user you are trying to asign does not exist');
+		ResponseService.setError(
+			404,
+			'The user you are trying to asign does not exist'
+		);
 		return ResponseService.send(res);
 	}
 	next();

@@ -15,7 +15,7 @@ const protectRoute = (req, res, next) => {
 		if (name === 'TokenExpiredError') {
 			ResponseService.setError(
 				401,
-				'Unauthorized, Token has expired signin again to get new token',
+				'Unauthorized, Token has expired signin again to get new token'
 			);
 			return ResponseService.send(res);
 		}
@@ -24,7 +24,7 @@ const protectRoute = (req, res, next) => {
 	} else {
 		ResponseService.setError(
 			401,
-			'You can not proceed without setting authorization token',
+			'You can not proceed without setting authorization token'
 		);
 		return ResponseService.send(res);
 	}

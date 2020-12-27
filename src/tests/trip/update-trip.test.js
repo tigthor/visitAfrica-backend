@@ -1,214 +1,209 @@
 /* eslint-disable no-useless-concat */
-import chai, { expect } from 'chai';
+import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../../server';
+import { trip, fakeTrip } from '../fixtures/trip.fixture';
 import {
-	multiCity,
-	wrongMultiCity,
-	wrongMultiCityDate,
-	wrongMultiCityLocation,
-	wrongMultiCityLocationSecond,
+	superAdminToken,
+	requesterToken1,
+	altRequesterToken,
 	multiCityToken,
-	wrongMultiCityArray,
-	token,
-	multiCityFalseId,
 } from '../fixtures/user.fixture';
 
 chai.should();
 chai.use(chaiHttp);
 
-const multiCityTest = () => {
-	describe('/POST multi city trip', () => {
-		it('Should create multi city trip', (done) => {
+const updateTripTest = () => {
+	describe(' update trip information', () => {
+		it('Should update a trip', (done) => {
 			chai
 				.request(app)
-				.post('/api/trip/multi-city')
+				.patch('/api/trip/edit/3')
 				.set('authorization', `bearer ${multiCityToken}`)
-				.send(multiCity)
-				.end((err, res) => {
-					expect(res).to.have.status(201);
-					expect(res.body).to.have.property('data');
-				});
-			done();
-		});
-		it('Should validate a user trying to create trip', (done) => {
-			chai
-				.request(app)
-				.post('/api/trip/multi-city')
-				.set('authorization', `bearer ${multiCityToken}`)
-				.send(multiCity)
+				.send(trip)
 				.end((err, res) => {
 					res.body.should.be.an('object');
-					res.should.have.property('status', 201);
+					res.status.should.be.equal(200);
 					res.body.should.have.property('message');
 				});
 			done();
 		});
-		it('Should validate duplication', (done) => {
+		it('Should update a trip', (done) => {
 			chai
 				.request(app)
-				.post('/api/trip/multi-city')
-				.set('authorization', `bearer ${multiCityToken}`)
-				.send(multiCity)
+				.patch('/api/trip/edit/3')
+				.set('authorization', `bearer ${requesterToken1}`)
+				.send(trip)
 				.end((err, res) => {
 					res.body.should.be.an('object');
-					res.should.have.status(409);
+					res.status.should.be.equal(403);
 					res.body.should.have.property('message');
 				});
 			done();
 		});
-		it('Should validate duplication', (done) => {
+		it('Should update a trip', (done) => {
 			chai
 				.request(app)
-				.post('/api/trip/multi-city')
+				.patch('/api/trip/edit/1')
 				.set('authorization', `bearer ${multiCityToken}`)
-				.send(wrongMultiCityLocation)
+				.send(trip)
 				.end((err, res) => {
 					res.body.should.be.an('object');
-					res.should.have.status(402);
+					res.status.should.be.equal(403);
 					res.body.should.have.property('message');
 				});
 			done();
 		});
-		it('Should check for body input validation', (done) => {
+		it('Should update a trip', (done) => {
 			chai
 				.request(app)
-				.post('/api/trip/multi-city')
-				.set('authorization', `bearer ${multiCityToken}`)
-				.send(wrongMultiCityDate)
+				.patch('/api/trip/edit/3')
+				.set('authorization', `bearer ${superAdminToken}`)
+				.send(trip)
 				.end((err, res) => {
 					res.body.should.be.an('object');
-					res.should.have.status(402);
+					res.status.should.be.equal(403);
 					res.body.should.have.property('message');
 				});
 			done();
 		});
-		it('Should check for body input validation', (done) => {
+		it('Should update a trip', (done) => {
 			chai
 				.request(app)
-				.post('/api/trip/multi-city')
+				.patch('/api/trip/edit/3')
 				.set('authorization', `bearer ${multiCityToken}`)
-				.send(wrongMultiCityLocation)
+				.send(trip)
 				.end((err, res) => {
 					res.body.should.be.an('object');
-					res.should.have.status(402);
+					res.status.should.be.equal(200);
 					res.body.should.have.property('message');
 				});
 			done();
 		});
-		it('Should check for body input validation', (done) => {
+		it('Should update a trip', (done) => {
 			chai
 				.request(app)
-				.post('/api/trip/multi-city')
+				.patch('/api/trip/edit/3')
 				.set('authorization', `bearer ${multiCityToken}`)
-				.send(multiCityFalseId)
+				.send(trip)
 				.end((err, res) => {
 					res.body.should.be.an('object');
-					res.should.have.status(400);
+					res.status.should.be.equal(200);
 					res.body.should.have.property('message');
 				});
 			done();
 		});
-		it('Should check for body input validation', (done) => {
+		it('Should not update a trip', (done) => {
 			chai
 				.request(app)
-				.post('/api/trip/multi-city')
-				.set('authorization', `bearer ${multiCityToken}`)
-				.send(wrongMultiCityLocation)
+				.patch('/api/trip/edit/1')
+				.set('authorization', `bearer ${altRequesterToken}`)
+				.send(trip)
 				.end((err, res) => {
 					res.body.should.be.an('object');
-					res.should.have.status(402);
+					res.status.should.be.equal(403);
 					res.body.should.have.property('message');
 				});
 			done();
 		});
-		it('Should check for body input validation', (done) => {
+		it('Should get a new trip information', (done) => {
 			chai
 				.request(app)
-				.post('/api/trip/multi-city')
+				.get('/api/trip/3')
 				.set('authorization', `bearer ${multiCityToken}`)
-				.send(wrongMultiCityLocationSecond)
 				.end((err, res) => {
 					res.body.should.be.an('object');
-					res.should.have.status(402);
+					res.status.should.be.equal(200);
 					res.body.should.have.property('message');
 				});
 			done();
 		});
-		it('Should check for body input validation', (done) => {
+		it('Should get a new trip information', (done) => {
 			chai
 				.request(app)
-				.post('/api/trip/multi-city')
+				.get('/api/trip/100')
 				.set('authorization', `bearer ${multiCityToken}`)
-				.send(wrongMultiCityLocation)
 				.end((err, res) => {
 					res.body.should.be.an('object');
-					res.should.have.status(402);
+					res.status.should.be.equal(404);
 					res.body.should.have.property('message');
 				});
 			done();
 		});
-		it('Should check for body input validation', (done) => {
+		it('Should trip validate a trip', (done) => {
 			chai
 				.request(app)
-				.post('/api/trip/multi-city')
+				.patch('/api/trip/edit/3')
 				.set('authorization', `bearer ${multiCityToken}`)
-				.send(wrongMultiCityArray)
+				.send(fakeTrip)
 				.end((err, res) => {
 					res.body.should.be.an('object');
-					res.should.have.status(402);
+					res.status.should.be.equal(400);
 					res.body.should.have.property('message');
 				});
 			done();
 		});
-		it('Should check for body input validation', (done) => {
+		it('Should a validate trip', (done) => {
 			chai
 				.request(app)
-				.post('/api/trip/multi-city')
+				.patch('/api/trip/edit/2')
 				.set('authorization', `bearer ${multiCityToken}`)
-				.send(wrongMultiCity)
+				.send(trip)
 				.end((err, res) => {
 					res.body.should.be.an('object');
-					res.should.have.status(402);
+					res.status.should.be.equal(403);
 					res.body.should.have.property('message');
 				});
 			done();
 		});
-		it('Should check for body input validation', (done) => {
+		it('Should a validate trip', (done) => {
 			chai
 				.request(app)
-				.post('/api/trip/multi-city')
+				.patch('/api/trip/edit/3')
 				.set('authorization', `bearer ${multiCityToken}`)
-				.send(wrongMultiCityLocation)
+				.send()
 				.end((err, res) => {
 					res.body.should.be.an('object');
-					res.should.have.status(402);
+					res.status.should.be.equal(402);
 					res.body.should.have.property('message');
 				});
 			done();
 		});
-		it('Should validate if user is assigned to line_manager', (done) => {
+		it('Should a validate trip', (done) => {
 			chai
 				.request(app)
-				.post('/api/trip/multi-city')
-				.set('authorization', `bearer ${token}`)
-				.send(multiCity)
+				.patch('/api/trip/edit/2')
+				.set('authorization', `bearer ${requesterToken1}`)
+				.send(trip)
 				.end((err, res) => {
 					res.body.should.be.an('object');
-					res.should.have.status(400);
+					res.status.should.be.equal(403);
 					res.body.should.have.property('message');
 				});
 			done();
 		});
-		it('Should validate trip duplication', (done) => {
+		it('Should a validate trip', (done) => {
 			chai
 				.request(app)
-				.post('/api/trip/multi-city')
-				.set('authorization', `bearer ${multiCityToken}`)
-				.send(multiCity)
+				.patch('/api/trip/edit/2')
+				.set('authorization', `bearer ${requesterToken1}`)
+				.send(trip)
 				.end((err, res) => {
 					res.body.should.be.an('object');
-					res.should.have.status(409);
+					res.status.should.be.equal(403);
+					res.body.should.have.property('message');
+				});
+			done();
+		});
+		it('Should update a trip', (done) => {
+			chai
+				.request(app)
+				.patch('/api/trip/edit/3')
+				.set('authorization', `bearer ${superAdminToken}`)
+				.send(trip)
+				.end((err, res) => {
+					res.body.should.be.an('object');
+					res.status.should.be.equal(403);
 					res.body.should.have.property('message');
 				});
 			done();
@@ -216,4 +211,4 @@ const multiCityTest = () => {
 	});
 };
 
-export default multiCityTest;
+export default updateTripTest;

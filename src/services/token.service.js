@@ -5,17 +5,19 @@ import jwt from 'jsonwebtoken';
  */
 class TokenService {
 	/**
-	 * @param {object} payload
-	 * @return {object} this is accept a payload and generate a jwt token
-	 */
+   * @param {object} payload
+   * @return {object} this is accept a payload and generate a jwt token
+   */
 	static generateToken(payload) {
-		return jwt.sign(payload, process.env.SECRET, { expiresIn: process.env.EXPIRE_TIME });
+		return jwt.sign(payload, process.env.SECRET, {
+			expiresIn: process.env.EXPIRE_TIME,
+		});
 	}
 
 	/**
-	 * @param {object} token
-	 * @return {object} this is accept a token and decode it according to the secret
-	 */
+   * @param {object} token
+   * @return {object} this is accept a token and decode it according to the secret
+   */
 	static verifyToken(token) {
 		return jwt.verify(token, process.env.SECRET, (err, decoded) => {
 			if (err) {

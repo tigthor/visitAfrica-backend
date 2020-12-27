@@ -6,9 +6,18 @@ const metadata = (Sequelize) => ({
 });
 module.exports = {
 	up: (queryInterface, Sequelize) => queryInterface.sequelize.transaction((transaction) => Promise.all([
-		queryInterface.addColumn('Users', 'line_manager_id', metadata(Sequelize), { transaction }),
-	])),
+		queryInterface.addColumn(
+			'Users',
+			'line_manager_id',
+			metadata(Sequelize),
+			{ transaction }
+		),
+	])
+	),
 	down: (queryInterface, Sequelize) => queryInterface.sequelize.transaction((transaction) => Promise.all([
-		queryInterface.removeColumn('Users', 'line_manager_id', { transaction }),
-	])),
+		queryInterface.removeColumn('Users', 'line_manager_id', {
+			transaction,
+		}),
+	])
+	),
 };
