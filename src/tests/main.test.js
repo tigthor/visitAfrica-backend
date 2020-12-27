@@ -10,6 +10,8 @@ import manageUserTest from './users/manage-user.test';
 import resetPassword from './auth/resetpassword.test';
 import multiCityTest from './trip/multi-city.test';
 import tripTest from './trip/trip.test';
+import updateTripTest from './trip/update-trip.test';
+import notificationTest from './notification/approve.test';
 
 appTest();
 signUpTest();
@@ -21,5 +23,7 @@ getUserTest();
 updateUserProfileTest();
 manageUserTest();
 resetPassword();
-tripTest();
 multiCityTest();
+updateTripTest();
+tripTest();
+notificationTest();
