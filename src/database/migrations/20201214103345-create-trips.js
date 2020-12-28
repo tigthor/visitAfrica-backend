@@ -35,6 +35,15 @@ module.exports = {
 					key: 'id',
 				},
 			},
+			line_manager_id: {
+				type: Sequelize.INTEGER,
+				onDelete: 'CASCADE',
+				onUpdate: 'CASCADE',
+				references: {
+					model: 'Users',
+					key: 'id'
+				},
+			},
 			createdAt: {
 				allowNull: false,
 				type: Sequelize.DATE,

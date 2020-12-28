@@ -1,11 +1,12 @@
 import { Router } from 'express';
 import TripController from '../controllers/trip.controller';
 import protectRoute from '../middlewares/protect-route.middleware';
+import { verifyIfAssigned } from '../middlewares/user.middleware';
 import {
 	validateTrip,
 	validateMultiCity,
 } from '../validations/multicity.validation';
-import { verifyIfAssigned } from '../middlewares/user.middleware';
+
 import {
 	checkIfTripExist,
 	checkLocation,
@@ -54,5 +55,4 @@ router.patch(
 	checkLocation,
 	TripController.updateInfoTrip
 );
-
 export default router;

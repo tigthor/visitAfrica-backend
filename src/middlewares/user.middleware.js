@@ -1,3 +1,4 @@
+/* eslint-disable valid-jsdoc */
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable no-underscore-dangle */
 import ResponseService from '../services/response.service';
@@ -112,6 +113,14 @@ export const verifyIfAssigned = async (req, res, next) => {
 	const user = await UserService.findUserByAttribute({ id: req.userData.id });
 	if (user.dataValues.line_manager_id === null) {
 		ResponseService.setError(400, 'User is not assigned to line manager');
+		return ResponseService.send(res);
+	}
+	next();
+};
+export const checkIfUserIsManager = async (req, res, next) => {
+	const { role } = await UserService.findUserByProperty({ id: req.userData.id });
+	if (role !== 'lineManager') {
+		ResponseService.setError(403, 'Forbidden. Only Managers can perform this action');
 		return ResponseService.send(res);
 	}
 	next();

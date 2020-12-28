@@ -1,3 +1,5 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
+/* eslint-disable max-len */
 import ResponseService from '../services/response.service';
 import TripService from '../services/trip.service';
 
@@ -73,6 +75,17 @@ class TripController {
 			'Trip request is successfully created',
 			newTrip
 		);
+		return ResponseService.send(res);
+	}
+
+	/**
+   * @param {req} req
+   * @param {res} res
+   * @returns {tripRequestLists} this function returns manager request list
+  */
+	static async findTripRequests(req, res) {
+		const tripRequests = await TripService.getAllRequets({ line_manager_id: req.userData.line_manager_id });
+		ResponseService.setSuccess(200, 'List of requests directed to you', tripRequests);
 		return ResponseService.send(res);
 	}
 }

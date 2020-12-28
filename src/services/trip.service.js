@@ -33,5 +33,14 @@ class TripService {
 	static createTrip(newTrip) {
 		return trips.create(newTrip);
 	}
+
+	/**
+   * Gets all Trip request .
+   * @param {object} param condition
+   * @returns {object} The requests object.
+   */
+	static getAllRequets(param) {
+		return trips.findAll({ param });
+	}
 }
 export default TripService;
