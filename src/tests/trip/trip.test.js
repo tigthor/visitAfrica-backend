@@ -81,6 +81,19 @@ const tripTest = () => {
 				});
 			done();
 		});
+		it('Should create return trip', (done) => {
+			chai
+				.request(app)
+				.post('/api/trip/return-trip')
+				.set('authorization', `Bearer ${userToken}`)
+				.send(returnTrip)
+				.end((err, res) => {
+					res.body.should.be.an('object');
+					res.should.have.property('status', 409);
+					res.body.should.have.property('message');
+				});
+			done();
+		});
 	});
 };
 

@@ -13,6 +13,6 @@ const verifySuperAdmin = async (req, res, next) => {
 		ResponseService.setError(403, 'You can not perform this Action');
 		return ResponseService.send(res);
 	}
-	return next();
+	next();
 };
 export default verifySuperAdmin;

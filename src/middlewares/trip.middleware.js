@@ -71,7 +71,6 @@ export const validateEditTrip = async (req, res, next) => {
 		);
 		return ResponseService.send(res);
 	}
-
 	next();
 };
 
