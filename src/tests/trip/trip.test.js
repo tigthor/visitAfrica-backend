@@ -63,7 +63,7 @@ const tripTest = () => {
 				.set('Authorization', `Bearer ${userToken}`)
 				.end((err, res) => {
 					res.body.should.be.an('object');
-					res.status.should.be.equal(400);
+					res.status.should.be.equal(422);
 					res.body.should.have.property('message');
 				});
 			done();
