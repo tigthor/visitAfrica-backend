@@ -75,6 +75,18 @@ class TripController {
 		);
 		return ResponseService.send(res);
 	}
+
+	/**
+   * @param {req} req
+   * @param {res} res
+   * @returns {tripRequestLists} this function returns manager's triprequests list
+  */
+	static async findAvailTripRequests(req, res) {
+		// eslint-disable-next-line max-len
+		const AvailRequests = await TripService.getAllRequets({ line_manager_id: req.userData.line_manager_id });
+		ResponseService.setSuccess(200, 'this is the list of all requestedTrip', AvailRequests);
+		return ResponseService.send(res);
+	}
 }
 
 export default TripController;

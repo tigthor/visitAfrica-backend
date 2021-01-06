@@ -1,10 +1,11 @@
 import models from '../database/models';
 
 const { trips } = models;
-
 /**
- * this is a user service
- */
+   * @param {object} attribute
+   * @param {object} property
+   * @return {object} update user by attribute
+   */
 class TripService {
 	/**
    * @param {object} attribute
@@ -32,6 +33,15 @@ class TripService {
    */
 	static createTrip(newTrip) {
 		return trips.create(newTrip);
+	}
+
+	/**
+   * Gets all Trip request .
+   * @param {object} param condition
+   * @returns {object} The requests object.
+   */
+	static getAllRequets(param) {
+		return trips.findAll({ param });
 	}
 }
 export default TripService;
