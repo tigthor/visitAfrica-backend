@@ -116,3 +116,11 @@ export const verifyIfAssigned = async (req, res, next) => {
 	}
 	next();
 };
+export const ManagerCheck = async (req, res, next) => {
+	const { role } = await UserService.findUserByProperty({ id: req.userData.id });
+	if (role !== 'lineManager') {
+		ResponseService.setError(403, 'this action this action is only for managers');
+		return ResponseService.send(res);
+	}
+	next();
+};

@@ -15,11 +15,13 @@ export const editTripValidation = async (req, res, next) => {
 			.messages({
 				'number.base': 'departure From city must be a an id',
 				'number.empty': 'departure from city must not be empty',
+				'number.trim': 'number must not have white spces at the beginning and at the end',
 			}),
 		departureTo: Joi.number().integer().min(1).optional()
 			.messages({
 				'number.base': 'departure To city must be a an id',
 				'number.empty': 'departure To city must not be empty',
+				'number.trim': 'number must not have white spces at the beginning and at the end',
 			}),
 		startingDate: Joi.date()
 			.greater('now')
@@ -29,6 +31,7 @@ export const editTripValidation = async (req, res, next) => {
 			.messages({
 				'date.greater': 'starting date" must not be in the past',
 				'date.format': 'starting date must have format YYYY-MM-DD',
+				'date.trim': 'date must not have white spces at the beginning and at the end',
 			}),
 		returningDate: Joi.date()
 			.greater(req.body.startingDate || trip.dataValues.startingDate)
@@ -38,6 +41,7 @@ export const editTripValidation = async (req, res, next) => {
 			.messages({
 				'date.greater': 'returning date" must be greater than strting date',
 				'date.format': 'returning date must have format YYYY-MM-DD',
+				'date.trim': 'date must not have white spces at the beginning and at the end',
 			}),
 		reason: Joi.string().trim().strict().min(3)
 			.max(30)
@@ -69,35 +73,17 @@ export const editTripValidation = async (req, res, next) => {
 
 export const returnTripValidation = (req, res, next) => {
 	const schema = Joi.object({
-		departureFrom: Joi.string()
-			.trim()
-			.strict()
-			.min(3)
-			.max(30)
-			.required()
+		departureFrom: Joi.number().integer().min(1).optional()
 			.messages({
-				'string.empty': 'departureFrom is not allowed to be empty',
-				'string.min': 'departureFrom length must be at least 3 characters long',
-				'string.max':
-          ' departureFrom length must be less than or equal to 30 characters long',
-				'any.required': 'departureFrom is required',
-				'string.trim':
-          'departureFrom must not have white spces at the beginning and at the end',
+				'number.base': 'departure From city must be a an id',
+				'number.empty': 'departure from city must not be empty',
+				'number.trim': 'number must not have white spces at the beginning and at the end',
 			}),
-		departureTo: Joi.string()
-			.trim()
-			.strict()
-			.min(3)
-			.max(30)
-			.required()
+		departureTo: Joi.number().integer().min(1).optional()
 			.messages({
-				'string.empty': 'departureTo is not allowed to be empty',
-				'string.min': 'departureTo length must be at least 3 characters long',
-				'string.max':
-          'departureTo length must be less than or equal to 30 characters long',
-				'any.required': 'departureTo is required',
-				'string.trim':
-          'departureTo must not have white spces at the beginning and at the end',
+				'number.base': 'departure To city must be a an id',
+				'number.empty': 'departure To city must not be empty',
+				'number.trim': 'number must not have white spces at the beginning and at the end',
 			}),
 		startingDate: Joi.date()
 			.greater('now')
@@ -107,6 +93,7 @@ export const returnTripValidation = (req, res, next) => {
 			.messages({
 				'date.greater': 'starting date" must not be in the past',
 				'date.format': 'starting date must have format YYYY-MM-DD',
+				'date.trim': 'date must not have white spces at the beginning and at the end',
 			}),
 		returningDate: Joi.date()
 			.greater(req.body.startingDate)
@@ -116,6 +103,7 @@ export const returnTripValidation = (req, res, next) => {
 			.messages({
 				'date.greater': 'returning date" must be greater than starting date',
 				'date.format': 'returning date must have format YYYY-MM-DD',
+				'date.trim': 'date must not have white spces at the beginning and at the end',
 			}),
 		reason: Joi.string().trim().strict().min(3)
 			.max(30)

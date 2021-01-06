@@ -208,6 +208,19 @@ const updateTripTest = () => {
 				});
 			done();
 		});
+		it('Should edit status', (done) => {
+			chai
+				.request(app)
+				.patch('/api/trip/editstatus/2')
+				.set('authorization', `bearer ${superAdminToken}`)
+				.send(trip)
+				.end((err, res) => {
+					res.body.should.be.an('object');
+					res.status.should.be.equal(200);
+					res.body.should.have.property('message');
+				});
+			done();
+		});
 	});
 };
 

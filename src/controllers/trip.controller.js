@@ -55,6 +55,28 @@ class TripController {
 	}
 
 	/**
+   *
+   * @param {object} req
+   * @param {object} res
+   * @returns {object} uf
+   */
+	static async updateTripStatus(req, res) {
+		await TripService.updateTripByAttribute(
+			{ id: req.params.id },
+			{
+				departureFrom: req.body.departureFrom,
+				departureTo: req.body.departureTo,
+				startingDate: req.body.startingDate,
+				returningDate: req.body.returningDate,
+				reason: req.body.reason,
+				status: req.body.status,
+			}
+		);
+		ResponseService.setSuccess(200, 'Tripstatus info updated successfully');
+		return ResponseService.send(res);
+	}
+
+	/**
    * @param {object} req
    * @param {object} res
    * @returns {response} @memberof Trips
@@ -75,6 +97,17 @@ class TripController {
 		);
 		return ResponseService.send(res);
 	}
-}
 
+	/**
+   * @param {req} req
+   * @param {res} res
+   * @returns {tripRequestLists} this function returns manager's triprequests list
+  */
+	static async findAvailTripRequests(req, res) {
+	// eslint-disable-next-line max-len
+		const AvailRequests = await TripService.getAllRequets({ line_manager_id: req.userData.line_manager_id });
+		ResponseService.setSuccess(200, 'this is the list of all requestedTrip', AvailRequests);
+		return ResponseService.send(res);
+	}
+}
 export default TripController;

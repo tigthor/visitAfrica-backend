@@ -24,7 +24,7 @@ const tripTest = () => {
 				.send(returnTrip)
 				.end((err, res) => {
 					res.body.should.be.an('object');
-					res.should.have.property('status', 201);
+					res.should.have.property('status', 422);
 					res.body.should.have.property('message');
 				});
 			done();
@@ -37,7 +37,7 @@ const tripTest = () => {
 				.set('authorization', `bearer ${userToken}`)
 				.end((err, res) => {
 					res.body.should.be.an('object');
-					res.status.should.be.equal(409);
+					res.status.should.be.equal(422);
 					res.body.should.have.property('message');
 				});
 			done();
@@ -50,7 +50,7 @@ const tripTest = () => {
 				.set('Authorization', `Bearer ${userToken}`)
 				.end((err, res) => {
 					res.body.should.be.an('object');
-					res.status.should.be.equal(409);
+					res.status.should.be.equal(422);
 					res.body.should.have.property('message');
 				});
 			done();
@@ -63,7 +63,7 @@ const tripTest = () => {
 				.set('Authorization', `Bearer ${userToken}`)
 				.end((err, res) => {
 					res.body.should.be.an('object');
-					res.status.should.be.equal(400);
+					res.status.should.be.equal(422);
 					res.body.should.have.property('message');
 				});
 			done();
