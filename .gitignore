@@ -6,3 +6,5 @@ coverage/
 preview.html
 .autogit/
 .vscode/
+/.history
+/.autogit

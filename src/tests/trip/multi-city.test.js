@@ -39,7 +39,7 @@ const multiCityTest = () => {
 				.send(multiCity)
 				.end((err, res) => {
 					res.body.should.be.an('object');
-					res.should.have.property('status', 409);
+					res.should.have.property('status', 201);
 					res.body.should.have.property('message');
 				});
 			done();
