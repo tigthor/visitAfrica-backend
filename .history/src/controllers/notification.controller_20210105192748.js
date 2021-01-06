@@ -15,7 +15,7 @@ class NotificationController {
 		const notifications = await NotificationService.getAllNotifications({ isRead: false });
 		const newNotificationArray = notifications.map((notification) => {
 			const { dataValues } = notification;
-			const { id, userId, createdAt, updatedAt, ...notificationToSend } = dataValues;
+			const { id, createdAt, updatedAt, ...notificationToSend } = dataValues;
 			return notificationToSend;
 		});
 		ResponseService.setSuccess(200, 'notifications successfully retrieved', newNotificationArray);

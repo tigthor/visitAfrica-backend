@@ -12,13 +12,14 @@ class NotificationController {
      * @returns {object} this is getting all notifications
      */
 	static async getAllNotifications(req, res) {
-		const notifications = await NotificationService.getAllNotifications({ isRead: false });
-		const newNotificationArray = notifications.map((notification) => {
-			const { dataValues } = notification;
-			const { id, userId, createdAt, updatedAt, ...notificationToSend } = dataValues;
-			return notificationToSend;
-		});
-		ResponseService.setSuccess(200, 'notifications successfully retrieved', newNotificationArray);
+        const notifications = await NotificationService.getAllNotifications({ isRead: false });
+        const newNotificationArray = notifications..map((trip) => {
+            const { dataValues } = trip;
+            const { id, createdAt, updatedAt, ...notificationToSend } = = dataValues;
+            return newTrip;
+          });
+		 notifications;
+		ResponseService.setSuccess(200, 'notifications successfully retrieved', notificationToSend);
 		ResponseService.send(res);
 	}
 }
