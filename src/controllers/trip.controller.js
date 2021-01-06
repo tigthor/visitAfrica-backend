@@ -1,5 +1,6 @@
 import ResponseService from '../services/response.service';
 import TripService from '../services/trip.service';
+import NotificationService from '../services/notification.service';
 
 /**
  * thuuu
@@ -50,6 +51,12 @@ class TripController {
 				reason: req.body.reason,
 			}
 		);
+		await NotificationService.createNotification({
+			userId: req.userData.id,
+			message: `trip with id ${req.params.id} updated successful`,
+			isRead: false,
+			requestId: req.params.id
+		});
 		ResponseService.setSuccess(200, 'Trip info updated successfully');
 		return ResponseService.send(res);
 	}
