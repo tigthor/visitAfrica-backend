@@ -32,20 +32,8 @@ class AuthController {
 			})
 		);
 
-		const userData = {
-			id: newUser.id,
-			fullname: newUser.fullname,
-			email: newUser.email,
-			birthdate: newUser.birthdate,
-			gender: newUser.gender,
-			tel: newUser.tel,
-			country: newUser.country,
-			city: newUser.city,
-			profilePicture: newUser.profilePicture,
-			role: newUser.role,
-			createdAt: newUser.createdAt,
-			updatedAt: newUser.updatedAt,
-		};
+		const userData = { ...newUser.dataValues };
+		delete userData.password;
 
 		ResponseService.setSuccess(201, 'User Successfully Created', {
 			user: userData,

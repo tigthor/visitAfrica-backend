@@ -11,6 +11,7 @@ import resetPassword from './auth/resetpassword.test';
 import multiCityTest from './trip/multi-city.test';
 import tripTest from './trip/trip.test';
 import updateTripTest from './trip/update-trip.test';
+import notificationOnEditTrip from './notification/notification-on-edit-trip';
 
 appTest();
 signUpTest();
@@ -25,3 +26,4 @@ resetPassword();
 multiCityTest();
 updateTripTest();
 tripTest();
+notificationOnEditTrip();
